@@ -92,7 +92,7 @@ export default function HomePage() {
               E
             </div>
             <div>
-              <h3 className="text-base font-semibold text-slate-900">Empresa de Tecnología</h3>
+              <h3 className="text-base font-semibold text-slate-900">Nexsys Centroamérica · Departamento de Microsoft</h3>
               <p className="text-sm text-slate-500">Desarrollador Backend - Práctica Profesional</p>
             </div>
           </div>
