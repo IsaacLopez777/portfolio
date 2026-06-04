@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "role": "Software Developer"
+  },
+  "about": {
+    "title": "About Me",
+    "objective": "Professional Objective",
+    "experience": "Professional Experience",
+    "education": "Academic Formation",
+    "certifications": "Professional Certifications"
+  },
+  "projects": {
+    "title": "Projects",
+    "featured": "Featured",
+    "all": "All"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Read more",
+    "published": "Published"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "sending": "Sending..."
+  },
+  "skills": {
+    "title": "Technical Skills"
+  },
+  "references": {
+    "title": "Professional References"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}

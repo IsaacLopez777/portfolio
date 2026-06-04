@@ -1,0 +1,46 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "projects": "Proyectos",
+    "blog": "Blog",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "role": "Desarrollador de Software"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "objective": "Objetivo Profesional",
+    "experience": "Experiencia Profesional",
+    "education": "Formación Académica",
+    "certifications": "Certificaciones profesionales"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "featured": "Destacados",
+    "all": "Todos"
+  },
+  "blog": {
+    "title": "Blog",
+    "readMore": "Leer más",
+    "published": "Publicado"
+  },
+  "contact": {
+    "title": "Contacto",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "sending": "Enviando..."
+  },
+  "skills": {
+    "title": "Habilidades Técnicas"
+  },
+  "references": {
+    "title": "Referencias Profesionales"
+  },
+  "footer": {
+    "rights": "Todos los derechos reservados."
+  }
+}
