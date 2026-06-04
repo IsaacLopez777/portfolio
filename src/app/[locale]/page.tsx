@@ -9,7 +9,8 @@ export default function HomePage() {
     { category: 'Lenguajes', items: ['JavaScript', 'Java', 'C#', 'SQL'] },
     { category: 'Frameworks', items: ['Spring Boot', '.NET'] },
     { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'MySQL'] },
-    { category: 'Cloud', items: ['Azure', 'Firebase', 'Docker'] },
+    { category: 'Cloud', items: ['Azure', 'Firebase'] },
+    { category: 'Mobile', items: ['FlutterFlow'] },
   ];
 
   const projects = [
@@ -107,7 +108,7 @@ export default function HomePage() {
           Habilidades Técnicas
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {skills.map((group) => (
             <div key={group.category} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
               <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{group.category}</h3>
