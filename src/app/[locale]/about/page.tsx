@@ -1,5 +1,4 @@
 import { setRequestLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
 
 interface AboutPageProps {
   params: Promise<{ locale: string }>;
@@ -10,80 +9,83 @@ export default async function AboutPage({ params }: AboutPageProps) {
   setRequestLocale(locale);
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h1 className="text-4xl font-bold text-gray-900 mb-8">Sobre mí</h1>
-      
+    <div className="max-w-3xl mx-auto px-6 py-16">
+      <h1 className="text-3xl font-bold text-slate-900 mb-8">Sobre mí</h1>
+
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-blue-600 mb-4">Objetivo Profesional</h2>
-        <p className="text-gray-700 leading-relaxed italic bg-gray-100 p-6 rounded-lg border-l-4 border-blue-500">
-          Apasionado por el desarrollo de software y la gestión de datos, enfocado en la creación 
-          de soluciones eficientes, escalables y orientadas al análisis de información. 
-          Especializado en desarrollo backend, bases de datos y automatización de procesos para 
-          el negocio, con experiencia práctica en implementación de soluciones reales que 
+        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">Objetivo Profesional</h2>
+        <p className="text-slate-600 leading-relaxed bg-slate-50 p-6 rounded-xl border border-slate-200">
+          Apasionado por el desarrollo de software y la gestión de datos, enfocado en la creación
+          de soluciones eficientes, escalables y orientadas al análisis de información.
+          Especializado en desarrollo backend, bases de datos y automatización de procesos para
+          el negocio, con experiencia práctica en implementación de soluciones reales que
           optimizan operaciones comerciales y mejoran la eficiencia organizacional.
         </p>
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-blue-600 mb-4">Experiencia Profesional</h2>
-        <div className="bg-white shadow-md rounded-lg p-6 mb-4">
-          <h3 className="text-xl font-bold text-gray-900">Práctica Profesional - Empresa de Tecnología</h3>
-          <p className="text-gray-600 italic mb-4">Desarrollo de Soluciones</p>
+        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b border-slate-200">
+          Experiencia Profesional
+        </h2>
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <div className="flex items-start gap-4 mb-4">
+            <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-lg font-bold text-slate-600">
+              E
+            </div>
+            <div>
+              <h3 className="text-base font-semibold text-slate-900">Empresa de Tecnología</h3>
+              <p className="text-sm text-slate-600">Desarrollador Backend - Práctica Profesional</p>
+            </div>
+          </div>
           <div className="mb-4">
-            <p className="font-semibold text-gray-700 mb-2">Responsabilidades principales:</p>
-            <ul className="list-disc list-inside text-gray-700 space-y-1">
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Responsabilidades</p>
+            <ul className="list-disc list-inside text-sm text-slate-600 space-y-1">
               <li>Desarrollo de herramientas internas para optimización de procesos comerciales</li>
-              <li>Participación en iniciativas de automatización orientadas a la mejora en la generación de propuestas técnicas</li>
+              <li>Participación en iniciativas de automatización orientadas a la mejora operativa</li>
             </ul>
           </div>
-          <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-            <p className="font-semibold text-gray-700 mb-1">Logro destacado:</p>
-            <p className="text-gray-700">
+          <div>
+            <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Logro destacado</p>
+            <p className="text-sm text-slate-600">
               Desarrollo de herramientas internas que optimizaron procesos operativos del equipo,
-              mejorando la eficiencia y reduciendo tiempos de respuesta en la generación de
-              soluciones para clientes.
+              mejorando la eficiencia y reduciendo tiempos de respuesta.
             </p>
           </div>
         </div>
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-blue-600 mb-4">Formación Académica</h2>
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h3 className="text-xl font-bold text-gray-900">Ingeniería en Sistemas de Computación</h3>
-          <p className="text-gray-600">Universidad Fidélitas (95%)</p>
-          <p className="text-gray-700 mt-2">
-            El programa de estudios incluye fundamentos de desarrollo de software, arquitectura 
+        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b border-slate-200">
+          Formación Académica
+        </h2>
+        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
+          <h3 className="text-base font-semibold text-slate-900">Ingeniería en Sistemas de Computación</h3>
+          <p className="text-sm text-slate-600 mt-1">Universidad Fidélitas (100% - TCU Pendiente)</p>
+          <p className="text-sm text-slate-500 mt-3">
+            El programa de estudios incluye fundamentos de desarrollo de software, arquitectura
             de sistemas, gestión de bases de datos y metodologías de ingeniería de software.
           </p>
         </div>
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-blue-600 mb-4">Certificaciones Profesionales</h2>
-        <ul className="space-y-2">
-          <li className="bg-white shadow-md rounded-lg p-4 flex items-start gap-3">
-            <span className="bg-blue-600 text-white text-sm px-2 py-1 rounded">CCNA 1</span>
-            <div>
-              <p className="font-semibold text-gray-900">Cisco CCNA 1</p>
-              <p className="text-gray-600 text-sm">Configuración de redes y protocolos de comunicación</p>
-            </div>
-          </li>
-          <li className="bg-white shadow-md rounded-lg p-4 flex items-start gap-3">
-            <span className="bg-blue-600 text-white text-sm px-2 py-1 rounded">CCNA 2</span>
-            <div>
-              <p className="font-semibold text-gray-900">Cisco CCNA 2</p>
-              <p className="text-gray-600 text-sm">Routing y conmutación de redes</p>
-            </div>
-          </li>
-          <li className="bg-white shadow-md rounded-lg p-4 flex items-start gap-3">
-            <span className="bg-blue-600 text-white text-sm px-2 py-1 rounded">CCNA 3</span>
-            <div>
-              <p className="font-semibold text-gray-900">Cisco CCNA 3</p>
-              <p className="text-gray-600 text-sm">Administración de infraestructura tecnológica</p>
-            </div>
-          </li>
-        </ul>
+        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b border-slate-200">
+          Certificaciones
+        </h2>
+        <div className="space-y-3">
+          <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+            <p className="font-semibold text-slate-900">Cisco CCNA 1</p>
+            <p className="text-sm text-slate-500">Configuración de redes y protocolos de comunicación</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+            <p className="font-semibold text-slate-900">Cisco CCNA 2</p>
+            <p className="text-sm text-slate-500">Routing y conmutación de redes</p>
+          </div>
+          <div className="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
+            <p className="font-semibold text-slate-900">Cisco CCNA 3</p>
+            <p className="text-sm text-slate-500">Administración de infraestructura tecnológica</p>
+          </div>
+        </div>
       </section>
     </div>
   );
