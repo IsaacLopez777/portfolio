@@ -6,9 +6,9 @@ export default function HomePage() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const skills = [
-    { category: 'Lenguajes', items: ['TypeScript', 'Java', 'C#', 'SQL'] },
-    { category: 'Frameworks', items: ['Spring Boot', '.NET', 'Node.js'] },
-    { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'PostgreSQL', 'MySQL'] },
+    { category: 'Lenguajes', items: ['JavaScript', 'Java', 'C#', 'SQL'] },
+    { category: 'Frameworks', items: ['Spring Boot', '.NET'] },
+    { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'MySQL'] },
     { category: 'Cloud', items: ['Azure', 'Firebase', 'Docker'] },
   ];
 
