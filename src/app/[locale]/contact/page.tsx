@@ -31,7 +31,7 @@ export default function ContactPage() {
             <div className="flex items-center gap-6">
               <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#e5e5e5] flex-shrink-0">
                 <Image
-                  src="/Allan.jpg"
+                  src="/images/Allan.jpg"
                   alt="Allan Vega Redondo"
                   fill
                   className="object-cover"

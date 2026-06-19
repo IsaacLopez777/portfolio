@@ -1,3 +1,6 @@
+'use client';
+
+import Image from 'next/image';
 import { setRequestLocale } from 'next-intl/server';
 
 interface AboutPageProps {
@@ -75,14 +78,14 @@ export default async function AboutPage({ params }: AboutPageProps) {
           <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-6">Certificaciones</h2>
           <div className="space-y-3">
             {[
-              { name: 'Scrum Master', desc: 'Metodología ágil para gestión de proyectos de software', icon: 'S' },
-              { name: 'Cisco CCNA 1', desc: 'Configuración de redes y protocolos de comunicación', icon: 'C1' },
-              { name: 'Cisco CCNA 2', desc: 'Routing y conmutación de redes', icon: 'C2' },
-              { name: 'Cisco CCNA 3', desc: 'Administración de infraestructura tecnológica', icon: 'C3' },
+              { name: 'Scrum Master', desc: 'Metodología ágil para gestión de proyectos de software', icon: '/images/scrum-logo.jpg' },
+              { name: 'Cisco CCNA 1', desc: 'Configuración de redes y protocolos de comunicación', icon: '/images/LOGO_Cisco_CCNA.png' },
+              { name: 'Cisco CCNA 2', desc: 'Routing y conmutación de redes', icon: '/images/LOGO_Cisco_CCNA.png' },
+              { name: 'Cisco CCNA 3', desc: 'Administración de infraestructura tecnológica', icon: '/images/LOGO_Cisco_CCNA.png' },
             ].map((cert, i) => (
               <div key={i} className="bg-white rounded-lg p-5 border border-[#e5e5e5] flex items-center gap-4">
-                <div className="w-12 h-12 bg-[#1a1a1a] rounded-lg flex items-center justify-center text-white text-xs font-bold">
-                  {cert.icon}
+                <div className="w-14 h-14 relative flex-shrink-0">
+                  <Image src={cert.icon} alt={cert.name} fill className="object-contain rounded" />
                 </div>
                 <div>
                   <p className="font-bold text-[#1a1a1a]">{cert.name}</p>
