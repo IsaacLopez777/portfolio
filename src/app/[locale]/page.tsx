@@ -41,148 +41,145 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="relative z-10 max-w-4xl mx-auto px-6 py-16">
-      <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-slate-800 to-slate-800/20 rounded-full"></div>
-
-      <header className="mb-20 pl-6">
-        <p className="inline-flex items-center gap-2 px-3 py-1 bg-slate-800 text-white text-xs font-medium rounded-full mb-4">
-          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span>
-          Disponible para proyectos
-        </p>
-
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
-          Isaac Tenorio López
-        </h1>
-
-        <p className="text-xl text-slate-500 mb-4">
-          Desarrollador de Software | Especialista en Bases de Datos
-        </p>
-
-        <p className="text-base text-slate-500 max-w-xl mb-8 leading-relaxed">
-          Transformo datos en información actionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
-        </p>
-
-        <div className="flex gap-4">
-          <a
-            href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-slate-900 text-white text-sm font-medium rounded-lg hover:bg-slate-800 transition-colors"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/IsaacLopez777/Portafolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 bg-white text-slate-900 text-sm font-medium rounded-lg border border-slate-300 hover:bg-slate-50 transition-colors"
-          >
-            GitHub
-          </a>
-        </div>
-      </header>
-
-      <section className="mb-16 pl-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6 pb-2 border-b border-slate-200">
-          Experiencia Profesional
-        </h2>
-
-        <div className="bg-white rounded-xl p-6 border border-slate-200 shadow-sm">
-          <div className="flex items-start gap-4 mb-4">
-            <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-lg font-bold text-white">
-              E
-            </div>
-            <div>
-              <h3 className="text-base font-semibold text-slate-900">Nexsys Centroamérica · Departamento de Microsoft</h3>
-              <p className="text-sm text-slate-500">Desarrollador Backend - Práctica Profesional</p>
-            </div>
+    <div className="min-h-screen bg-[#FAFAFA]">
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <header className="mb-24">
+          <div className="w-16 h-16 bg-[#1a1a1a] rounded-full flex items-center justify-center text-white text-xl font-bold mb-8">
+            I
           </div>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
+
+          <p className="inline-block px-3 py-1 bg-[#1a1a1a] text-white text-xs font-medium mb-4">
+            Disponible para proyectos
           </p>
-        </div>
-      </section>
 
-      <section className="mb-16 pl-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6 pb-2 border-b border-slate-200">
-          Habilidades Técnicas
-        </h2>
+          <h1 className="text-5xl md:text-6xl font-bold text-[#1a1a1a] mb-4 tracking-tight leading-none">
+            Isaac Tenorio López
+          </h1>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          {skills.map((group) => (
-            <div key={group.category} className="bg-white rounded-xl p-5 border border-slate-200 shadow-sm">
-              <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">{group.category}</h3>
-              <div className="flex flex-wrap gap-1.5">
-                {group.items.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2 py-1 bg-slate-800 text-white text-xs font-medium rounded"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+          <p className="text-lg text-[#666] mb-5">
+            Desarrollador de Software · Especialista en Bases de Datos
+          </p>
 
-      <section className="mb-16 pl-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6 pb-2 border-b border-slate-200">
-          Proyectos Destacados
-        </h2>
+          <p className="text-[#888] max-w-md mb-10 leading-relaxed">
+            Transformo datos en información accionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
+          </p>
 
-        <div className="grid md:grid-cols-2 gap-5">
-          {projects.map((project, i) => (
-            <div
-              key={project.id}
-              onMouseEnter={() => setHoveredProject(i)}
-              onMouseLeave={() => setHoveredProject(null)}
-              className={`bg-white rounded-xl p-6 border transition-all cursor-default ${
-                hoveredProject === i ? 'border-slate-800 shadow-lg -translate-y-1' : 'border-slate-200 shadow-sm'
-              }`}
+          <div className="flex gap-3">
+            <a
+              href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg hover:bg-[#333] transition-colors"
             >
-              <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center mb-3">
-                <span className="text-sm">📁</span>
-              </div>
-              <h3 className="text-base font-semibold text-slate-900 mb-2">{project.title}</h3>
-              <p className="text-sm text-slate-500 mb-4 leading-relaxed">{project.desc}</p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span key={tech} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              LinkedIn
+            </a>
+            <a
+              href="https://github.com/IsaacLopez777/Portafolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2.5 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border-2 border-[#1a1a1a] hover:bg-[#f5f5f5] transition-colors"
+            >
+              GitHub
+            </a>
+          </div>
+        </header>
+
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
+
+          <div className="border-l-2 border-[#1a1a1a] pl-6">
+            <div className="mb-2">
+              <span className="inline-block px-2 py-0.5 bg-[#f0f0f0] text-[#666] text-xs font-medium rounded">
+                Nexsys Centroamérica
+              </span>
+              <span className="inline-block px-2 py-0.5 bg-[#1a1a1a] text-white text-xs font-medium rounded ml-2">
+                Departamento de Microsoft
+              </span>
             </div>
-          ))}
-        </div>
-      </section>
+            <h3 className="text-xl font-bold text-[#1a1a1a] mb-1">Desarrollador Backend</h3>
+            <p className="text-[#888] text-sm mb-4">Práctica Profesional</p>
+            <p className="text-[#666] leading-relaxed max-w-lg">
+              Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
+            </p>
+          </div>
+        </section>
 
-      <section className="mb-16 pl-6">
-        <h2 className="text-lg font-semibold text-slate-900 mb-6 pb-2 border-b border-slate-200">
-          Contacto
-        </h2>
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Skills</h2>
 
-        <div className="bg-slate-800 rounded-xl p-6 text-center">
-          <p className="text-sm text-slate-300 mb-4">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-          <a
-            href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-sm font-medium rounded-lg hover:bg-[#20BD5A] transition-colors"
-          >
-            <span>💬</span>
-            <span>WhatsApp</span>
-          </a>
-          <p className="text-xs text-slate-400 mt-4">Lopeztenorio58@gmail.com</p>
-        </div>
-      </section>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {skills.map((group) => (
+              <div key={group.category} className="bg-white rounded-lg p-5 border border-[#e5e5e5]">
+                <h3 className="text-xs font-bold text-[#999] uppercase tracking-wider mb-3">{group.category}</h3>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2 py-1 bg-[#f5f5f5] text-[#333] text-xs font-medium rounded"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <footer className="text-center py-8 border-t border-slate-200 ml-6">
-        <p className="text-sm text-slate-500">© 2026 Isaac Tenorio López</p>
-        <p className="text-xs text-slate-400 mt-1">Tres Ríos, Costa Rica</p>
-      </footer>
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {projects.map((project, i) => (
+              <div
+                key={project.id}
+                onMouseEnter={() => setHoveredProject(i)}
+                onMouseLeave={() => setHoveredProject(null)}
+                className={`bg-white rounded-lg p-5 border-2 transition-all cursor-pointer ${
+                  hoveredProject === i
+                    ? 'border-[#1a1a1a]'
+                    : 'border-[#e5e5e5]'
+                }`}
+              >
+                <div className="w-8 h-8 bg-[#f0f0f0] rounded flex items-center justify-center mb-3">
+                  <span className="text-sm">📁</span>
+                </div>
+                <h3 className="text-base font-bold text-[#1a1a1a] mb-2">{project.title}</h3>
+                <p className="text-[#888] text-sm mb-4 leading-relaxed">{project.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="px-2 py-0.5 bg-[#f0f0f0] text-[#666] text-xs rounded">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Contacto</h2>
+
+          <div className="bg-[#1a1a1a] rounded-lg p-8 text-center">
+            <p className="text-[#999] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+            <a
+              href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-sm font-bold rounded-lg hover:bg-[#20BD5A] transition-colors"
+            >
+              💬 WhatsApp
+            </a>
+            <p className="text-[#666] text-sm mt-5">Lopeztenorio58@gmail.com</p>
+          </div>
+        </section>
+
+        <footer className="text-center py-8 border-t border-[#e5e5e5]">
+          <p className="text-[#999]">© 2026 Isaac Tenorio López</p>
+          <p className="text-[#bbb] text-sm mt-1">Tres Ríos, Costa Rica</p>
+        </footer>
+      </div>
     </div>
   );
 }
