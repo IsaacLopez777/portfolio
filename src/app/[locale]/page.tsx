@@ -130,8 +130,7 @@ export default function HomePage() {
                 </motion.a>
                 <motion.a
                   href="/CV/Isaac_Tenorio_Lopez_CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  download
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a1a2e] text-white text-sm font-semibold rounded-lg shadow-md"
                   whileHover={{ scale: 1.05, backgroundColor: '#2a2a3e' }}
                   whileTap={{ scale: 0.97 }}
