@@ -119,28 +119,32 @@ export default function HomePage() {
         </header>
 
         <section className="mb-20">
-          <div className="relative overflow-hidden bg-gradient-to-br from-[#1a1a2e] to-[#3a86ff] rounded-2xl p-10 text-center">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-            <div className="relative z-10">
-              <div className="w-20 h-20 mx-auto mb-6 bg-white rounded-2xl flex items-center justify-center shadow-xl">
-                <svg className="w-10 h-10 text-[#3a86ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="bg-white rounded-2xl border border-[#f0f0f5] shadow-lg shadow-blue-100/50 p-8 md:flex md:items-center md:gap-8">
+            <div className="flex-shrink-0 flex justify-center mb-6 md:mb-0">
+              <div className="w-20 h-20 bg-[#e8f4ff] rounded-2xl flex items-center justify-center">
+                <svg className="w-10 h-10 text-[#3a86ff] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{animationDuration: '2s'}}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">Descarga mi CV</h3>
-              <p className="text-white/70 mb-6 max-w-md mx-auto">Conoce más sobre mi experiencia, habilidades y formación en mi currículum completo.</p>
+            </div>
+            <div className="flex-1 text-center md:text-left">
+              <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+                <h3 className="text-xl font-bold text-[#1a1a2e]">Descarga mi CV</h3>
+                <span className="inline-block px-2 py-0.5 bg-[#e8f4ff] text-[#3a86ff] text-xs font-semibold rounded-full">PDF · 115 KB</span>
+              </div>
+              <p className="text-[#6b7280] mb-5">Conoce más sobre mi experiencia, habilidades y formación en mi currículum completo.</p>
               <a
                 href="/CV/Isaac_Tenorio_Lopez_CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#1a1a2e] font-bold rounded-xl hover:bg-[#f5f5f5] transition-colors shadow-lg"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#3a86ff] text-white text-sm font-semibold rounded-xl hover:bg-[#2563eb] transition-all hover:shadow-lg hover:shadow-blue-200 group"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <svg className="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                 </svg>
                 Descargar CV
               </a>
+              <p className="text-xs text-[#aaa] mt-3">Última actualización: Junio 2026</p>
             </div>
           </div>
         </section>
