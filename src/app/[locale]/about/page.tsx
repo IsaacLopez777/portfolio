@@ -12,11 +12,11 @@ export default async function AboutPage({ params }: AboutPageProps) {
   return (
     <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <h1 className="text-4xl font-bold text-[#1a1a1a] mb-12">Sobre mí</h1>
+        <h1 className="text-4xl font-bold text-[#1a1a2e] mb-12">Sobre mí</h1>
 
         <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-6">Objetivo</h2>
-          <p className="text-[#666] leading-relaxed bg-[#fafafa] p-8 rounded-lg border border-[#f0f0f0]">
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Objetivo</h2>
+          <p className="text-[#555] leading-relaxed bg-[#fafafa] p-8 rounded-xl border border-[#f0f0f5]">
             Apasionado por el desarrollo de software y la gestión de datos, enfocado en la creación
             de soluciones eficientes, escalables y orientadas al análisis de información.
             Especializado en desarrollo backend, bases de datos y automatización de procesos para
@@ -26,30 +26,30 @@ export default async function AboutPage({ params }: AboutPageProps) {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-6">Experiencia</h2>
-          <div className="bg-[#fafafa] rounded-lg p-8 border border-[#f0f0f0]">
-            <div className="border-l-2 border-[#e5e5e5] pl-6">
-              <div className="mb-2">
-                <span className="inline-block px-2 py-0.5 bg-white text-[#666] text-xs font-medium rounded border border-[#eee]">
-                  Nexsys Centroamérica
-                </span>
-                <span className="inline-block px-2 py-0.5 bg-white text-[#999] text-xs font-medium rounded border border-[#eee] ml-2">
-                  Departamento de Microsoft
-                </span>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Experiencia</h2>
+          <div className="flex gap-6">
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 bg-[#3a86ff] rounded-full"></div>
+              <div className="w-0.5 h-full bg-[#e5e5ea] mt-2"></div>
+            </div>
+            <div className="flex-1 bg-[#fafafa] rounded-xl p-6 border border-[#f0f0f5] mb-6">
+              <div className="flex flex-wrap gap-2 mb-3">
+                <span className="px-2.5 py-1 bg-[#e8f4ff] text-[#3a86ff] text-xs font-medium rounded-full">Nexsys Centroamérica</span>
+                <span className="px-2.5 py-1 bg-[#f0f0f5] text-[#555] text-xs font-medium rounded-full">Departamento de Microsoft</span>
               </div>
-              <h3 className="text-xl font-bold text-[#1a1a1a] mb-1">Desarrollador Backend</h3>
-              <p className="text-[#bbb] text-sm mb-4">Práctica Profesional</p>
+              <h3 className="text-lg font-bold text-[#1a1a2e] mb-1">Desarrollador Backend</h3>
+              <p className="text-sm text-[#6b7280] mb-3">Práctica Profesional</p>
               <div className="space-y-3">
                 <div>
-                  <p className="text-xs font-bold text-[#ccc] uppercase tracking-wider mb-2">Responsabilidades</p>
-                  <ul className="list-disc list-inside text-[#888] space-y-1">
+                  <p className="text-xs font-bold text-[#3a86ff] uppercase tracking-wider mb-2">Responsabilidades</p>
+                  <ul className="list-disc list-inside text-[#555] space-y-1">
                     <li>Desarrollo de herramientas internas para optimización de procesos comerciales</li>
                     <li>Participación en iniciativas de automatización orientadas a la mejora operativa</li>
                   </ul>
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-[#ccc] uppercase tracking-wider mb-2">Logro destacado</p>
-                  <p className="text-[#888]">
+                  <p className="text-xs font-bold text-[#3a86ff] uppercase tracking-wider mb-2">Logro destacado</p>
+                  <p className="text-[#555]">
                     Desarrollo de herramientas internas que optimizaron procesos operativos del equipo,
                     mejorando la eficiencia y reduciendo tiempos de respuesta.
                   </p>
@@ -60,12 +60,12 @@ export default async function AboutPage({ params }: AboutPageProps) {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-6">Educación</h2>
-          <div className="bg-[#fafafa] rounded-lg p-8 border border-[#f0f0f0]">
-            <h3 className="text-lg font-bold text-[#1a1a1a]">Ingeniería en Sistemas de Computación</h3>
-            <p className="text-[#555] font-medium mt-1">Universidad Fidélitas</p>
-            <p className="text-[#bbb] text-sm mt-1">100% - TCU Pendiente</p>
-            <p className="text-[#888] mt-4">
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Educación</h2>
+          <div className="bg-[#fafafa] rounded-xl p-8 border border-[#f0f0f5]">
+            <h3 className="text-lg font-bold text-[#1a1a2e]">Ingeniería en Sistemas de Computación</h3>
+            <p className="text-[#3a86ff] font-medium mt-1">Universidad Fidélitas</p>
+            <p className="text-[#6b7280] text-sm mt-1">100% - TCU Pendiente</p>
+            <p className="text-[#555] mt-4">
               El programa de estudios incluye fundamentos de desarrollo de software, arquitectura
               de sistemas, gestión de bases de datos y metodologías de ingeniería de software.
             </p>
@@ -73,7 +73,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
         </section>
 
         <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-6">Certificaciones</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Certificaciones</h2>
           <div className="space-y-3">
             {[
               { name: 'Scrum Master', desc: 'Metodología ágil para gestión de proyectos de software', icon: '/images/scrum-logo.jpg' },
@@ -81,13 +81,13 @@ export default async function AboutPage({ params }: AboutPageProps) {
               { name: 'Cisco CCNA 2', desc: 'Routing y conmutación de redes', icon: '/images/LOGO_Cisco_CCNA.png' },
               { name: 'Cisco CCNA 3', desc: 'Administración de infraestructura tecnológica', icon: '/images/LOGO_Cisco_CCNA.png' },
             ].map((cert, i) => (
-              <div key={i} className="bg-[#fafafa] rounded-lg p-5 border border-[#f0f0f0] flex items-center gap-4">
+              <div key={i} className="bg-[#fafafa] rounded-xl p-5 border border-[#f0f0f5] flex items-center gap-4">
                 <div className="w-14 h-14 relative flex-shrink-0">
                   <Image src={cert.icon} alt={cert.name} fill className="object-contain rounded" />
                 </div>
                 <div>
-                  <p className="font-bold text-[#1a1a1a]">{cert.name}</p>
-                  <p className="text-sm text-[#999]">{cert.desc}</p>
+                  <p className="font-bold text-[#1a1a2e]">{cert.name}</p>
+                  <p className="text-sm text-[#6b7280]">{cert.desc}</p>
                 </div>
               </div>
             ))}

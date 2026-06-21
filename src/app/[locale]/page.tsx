@@ -43,87 +43,115 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-3xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <header className="mb-24">
-          <div className="flex items-start gap-6 mb-8">
-            <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-[#f0f0f0] shadow-lg">
-              <Image
-                src="/images/Isaac.jpg"
-                alt="Isaac Tenorio López"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="pt-2">
-              <p className="inline-block px-3 py-1 bg-[#f5f5f5] text-[#666] text-xs font-medium rounded-full mb-3">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#f0f0f5] rounded-full text-sm text-[#555] mb-6 border border-[#e5e5ea]">
+                <span className="w-2 h-2 bg-[#3a86ff] rounded-full"></span>
                 Disponible para proyectos
               </p>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] tracking-tight leading-tight">
+
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4 leading-tight">
                 Isaac Tenorio López
               </h1>
+
+              <p className="text-lg text-[#3a86ff] font-medium mb-4">
+                Desarrollador de Software · Especialista en Bases de Datos
+              </p>
+
+              <p className="text-[#6b7280] mb-8 leading-relaxed max-w-md">
+                Transformo datos en información accionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
+              </p>
+
+              <div className="flex gap-3">
+                <a
+                  href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-[#3a86ff] text-white text-sm font-semibold rounded-lg hover:bg-[#2563eb] transition-colors shadow-md"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/IsaacLopez777/Portafolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-2.5 bg-white text-[#1a1a2e] text-sm font-semibold rounded-lg border-2 border-[#e5e5ea] hover:bg-[#f9fafb] transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
-          </div>
 
-          <p className="text-lg text-[#888] mb-5">
-            Desarrollador de Software · Especialista en Bases de Datos
-          </p>
+            <div className="flex justify-center relative">
+              <div className="relative">
+                <div className="absolute inset-0 bg-[#3a86ff] rounded-full opacity-20 blur-3xl scale-90"></div>
+                <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                  <Image
+                    src="/images/Isaac.jpg"
+                    alt="Isaac Tenorio López"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]">
+                  SQL
+                </div>
+                <div className="absolute -bottom-1 -left-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]">
+                  JS
+                </div>
+                <div className="absolute top-1/2 -right-5 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]">
+                  DB
+                </div>
+              </div>
 
-          <p className="text-[#aaa] max-w-md mb-10 leading-relaxed">
-            Transformo datos en información accionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
-          </p>
-
-          <div className="flex gap-3">
-            <a
-              href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-[#1a1a1a] text-white text-sm font-medium rounded-lg hover:bg-[#333] transition-colors"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://github.com/IsaacLopez777/Portafolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border-2 border-[#e5e5e5] hover:bg-[#f5f5f5] transition-colors"
-            >
-              GitHub
-            </a>
+              <div className="absolute top-4 left-0 flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-md border border-[#f0f0f5]">
+                <span className="text-[#ff6b6b]">❤️</span>
+                <span className="text-xs font-semibold text-[#1a1a2e]">4 proyectos</span>
+              </div>
+              <div className="absolute bottom-8 -left-4 flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-md border border-[#f0f0f5]">
+                <span className="text-[#3a86ff]">💬</span>
+                <span className="text-xs font-semibold text-[#1a1a2e]">Disponible</span>
+              </div>
+            </div>
           </div>
         </header>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
 
-          <div className="border-l-2 border-[#e5e5e5] pl-6">
-            <div className="mb-2">
-              <span className="inline-block px-2 py-0.5 bg-[#f5f5f5] text-[#666] text-xs font-medium rounded">
-                Nexsys Centroamérica
-              </span>
-              <span className="inline-block px-2 py-0.5 bg-[#f5f5f5] text-[#999] text-xs font-medium rounded ml-2">
-                Departamento de Microsoft
-              </span>
+          <div className="flex gap-6">
+            <div className="flex flex-col items-center">
+              <div className="w-3 h-3 bg-[#3a86ff] rounded-full"></div>
+              <div className="w-0.5 h-full bg-[#e5e5ea] mt-2"></div>
             </div>
-            <h3 className="text-xl font-bold text-[#1a1a1a] mb-1">Desarrollador Backend</h3>
-            <p className="text-[#bbb] text-sm mb-4">Práctica Profesional</p>
-            <p className="text-[#888] leading-relaxed max-w-lg">
-              Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
-            </p>
+            <div className="flex-1 bg-[#fafafa] rounded-xl p-6 border border-[#f0f0f5] shadow-sm mb-6">
+              <div className="flex flex-wrap gap-2 mb-3">
+                <span className="px-2.5 py-1 bg-[#e8f4ff] text-[#3a86ff] text-xs font-medium rounded-full">Nexsys Centroamérica</span>
+                <span className="px-2.5 py-1 bg-[#f0f0f5] text-[#555] text-xs font-medium rounded-full">Departamento de Microsoft</span>
+              </div>
+              <h3 className="text-lg font-bold text-[#1a1a2e] mb-1">Desarrollador Backend</h3>
+              <p className="text-sm text-[#6b7280] mb-3">Práctica Profesional</p>
+              <p className="text-[#555] leading-relaxed">
+                Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
+              </p>
+            </div>
           </div>
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Skills</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Skills</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {skills.map((group) => (
-              <div key={group.category} className="bg-[#fafafa] rounded-lg p-5 border border-[#f0f0f0]">
-                <h3 className="text-xs font-bold text-[#bbb] uppercase tracking-wider mb-3">{group.category}</h3>
+              <div key={group.category} className="bg-[#fafafa] rounded-xl p-4 border border-[#f0f0f5]">
+                <h3 className="text-xs font-semibold text-[#3a86ff] uppercase tracking-wider mb-2">{group.category}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {group.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-1 bg-white text-[#555] text-xs font-medium rounded border border-[#eee]"
+                      className="px-2 py-1 bg-white text-[#555] text-xs font-medium rounded border border-[#e5e5ea]"
                     >
                       {skill}
                     </span>
@@ -135,7 +163,7 @@ export default function HomePage() {
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {projects.map((project, i) => (
@@ -143,20 +171,20 @@ export default function HomePage() {
                 key={project.id}
                 onMouseEnter={() => setHoveredProject(i)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className={`bg-white rounded-lg p-5 border-2 transition-all cursor-pointer ${
+                className={`bg-white rounded-xl p-5 border transition-all cursor-pointer ${
                   hoveredProject === i
-                    ? 'border-[#1a1a1a] shadow-lg'
-                    : 'border-[#f0f0f0]'
+                    ? 'border-[#3a86ff] shadow-lg shadow-blue-100'
+                    : 'border-[#f0f0f5] shadow-sm'
                 }`}
               >
                 <div className="w-8 h-8 bg-[#fafafa] rounded flex items-center justify-center mb-3">
                   <span className="text-sm">📁</span>
                 </div>
-                <h3 className="text-base font-bold text-[#1a1a1a] mb-2">{project.title}</h3>
-                <p className="text-[#888] text-sm mb-4 leading-relaxed">{project.desc}</p>
+                <h3 className="text-base font-bold text-[#1a1a2e] mb-2">{project.title}</h3>
+                <p className="text-sm text-[#6b7280] mb-4 leading-relaxed">{project.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 bg-[#fafafa] text-[#666] text-xs rounded border border-[#eee]">
+                    <span key={tech} className="px-2 py-0.5 bg-[#f0f0f5] text-[#555] text-xs rounded">
                       {tech}
                     </span>
                   ))}
@@ -167,15 +195,15 @@ export default function HomePage() {
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Contacto</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Contacto</h2>
 
-          <div className="bg-[#fafafa] rounded-lg p-8 text-center border border-[#f0f0f0]">
-            <p className="text-[#888] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+          <div className="bg-[#fafafa] rounded-xl p-8 text-center border border-[#f0f0f5]">
+            <p className="text-[#6b7280] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
             <a
               href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-sm font-bold rounded-lg hover:bg-[#20BD5A] transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-sm font-semibold rounded-lg hover:bg-[#20BD5A] transition-colors shadow-md"
             >
               💬 WhatsApp
             </a>
@@ -183,9 +211,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <footer className="text-center py-8 border-t border-[#f0f0f0]">
-          <p className="text-[#bbb]">© 2026 Isaac Tenorio López</p>
-          <p className="text-[#ddd] text-sm mt-1">Tres Ríos, Costa Rica</p>
+        <footer className="text-center py-8 border-t border-[#f0f0f5]">
+          <p className="text-[#6b7280]">© 2026 Isaac Tenorio López</p>
+          <p className="text-[#aaa] text-sm mt-1">Tres Ríos, Costa Rica</p>
         </footer>
       </div>
     </div>

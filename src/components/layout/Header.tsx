@@ -27,33 +27,44 @@ export function Header({ locale }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white border-b border-[#f0f0f0] sticky top-0 z-50">
-      <nav className="max-w-3xl mx-auto px-6">
-        <div className="flex justify-between items-center h-14">
-          <Link href={`/${locale}`} className="flex items-center gap-2">
-            <span className="text-sm font-bold text-[#1a1a1a]">Isaac López</span>
+    <header className="bg-white border-b border-[#f0f0f5] sticky top-0 z-50">
+      <nav className="max-w-6xl mx-auto px-6 py-4">
+        <div className="flex justify-between items-center">
+          <Link href={`/${locale}`} className="text-xl font-bold text-[#1a1a2e]">
+            isaac<span className="text-[#3a86ff]">.</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-1 bg-[#fafafa] rounded-full px-2 py-1 border border-[#f0f0f5]">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-[#999] hover:text-[#1a1a1a] transition-colors"
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                  pathname === item.href || (item.href === `/${locale}` && pathname === `/${locale}`)
+                    ? 'bg-[#1a1a2e] text-white'
+                    : 'text-[#6b7280] hover:text-[#1a1a2e]'
+                }`}
               >
                 {item.label}
               </Link>
             ))}
-            <div className="flex items-center gap-1 ml-2 pl-5 border-l border-[#f0f0f0]">
+          </div>
+
+          <div className="hidden md:flex items-center gap-3">
+            <div className="flex items-center gap-1 bg-[#fafafa] rounded-lg px-1 py-1 border border-[#f0f0f5]">
               <button
                 onClick={() => switchLocale('es')}
-                className={`px-2.5 py-1 text-xs rounded transition-all ${locale === 'es' ? 'bg-[#1a1a1a] text-white' : 'text-[#bbb] hover:bg-[#f5f5f5]'}`}
+                className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${
+                  locale === 'es' ? 'bg-[#1a1a2e] text-white' : 'text-[#6b7280] hover:bg-[#f0f0f5]'
+                }`}
               >
                 ES
               </button>
               <button
                 onClick={() => switchLocale('en')}
-                className={`px-2.5 py-1 text-xs rounded transition-all ${locale === 'en' ? 'bg-[#1a1a1a] text-white' : 'text-[#bbb] hover:bg-[#f5f5f5]'}`}
+                className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${
+                  locale === 'en' ? 'bg-[#1a1a2e] text-white' : 'text-[#6b7280] hover:bg-[#f0f0f5]'
+                }`}
               >
                 EN
               </button>
@@ -65,7 +76,7 @@ export function Header({ locale }: HeaderProps) {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-5 h-5 text-[#999]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-[#6b7280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -81,7 +92,7 @@ export function Header({ locale }: HeaderProps) {
               <Link
                 key={item.href}
                 href={item.href}
-                className="block py-2 text-sm text-[#999]"
+                className="block py-2 text-sm text-[#6b7280]"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
