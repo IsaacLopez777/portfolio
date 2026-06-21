@@ -43,14 +43,16 @@ export default function ContactPage() {
               <div className="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#f0f0f5] flex-shrink-0">
                 <Image
                   src="/images/Foto generica.png"
-                  alt="Referencia Profesional"
+                  alt="Allan Vega Redondo"
                   fill
                   className="object-cover"
                 />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#1a1a2e]">Referencia Profesional</h3>
-                <p className="text-[#6b7280]">Disponible bajo solicitud</p>
+                <h3 className="text-lg font-bold text-[#1a1a2e]">Allan Vega Redondo</h3>
+                <p className="text-[#6b7280]">Ingeniero de Preventa Microsoft</p>
+                <p className="text-[#aaa] text-sm">Nexsys Centroamérica</p>
+                <a href="tel:+50664046149" className="text-[#3a86ff] hover:text-[#2563eb] text-sm mt-1 inline-block">+506 6404 6149</a>
               </div>
             </div>
           </div>
