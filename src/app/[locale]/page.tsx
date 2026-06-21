@@ -42,31 +42,33 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
+    <div className="min-h-screen bg-white">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-24">
-          <div className="relative w-20 h-20 mb-8 rounded-full overflow-hidden border-2 border-[#e5e5e5]">
-            <Image
-              src="/images/Isaac.jpg"
-              alt="Isaac Tenorio López"
-              fill
-              className="object-cover"
-            />
+          <div className="flex items-start gap-6 mb-8">
+            <div className="relative w-24 h-24 rounded-full overflow-hidden border-4 border-[#f0f0f0] shadow-lg">
+              <Image
+                src="/images/Isaac.jpg"
+                alt="Isaac Tenorio López"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="pt-2">
+              <p className="inline-block px-3 py-1 bg-[#f5f5f5] text-[#666] text-xs font-medium rounded-full mb-3">
+                Disponible para proyectos
+              </p>
+              <h1 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] tracking-tight leading-tight">
+                Isaac Tenorio López
+              </h1>
+            </div>
           </div>
 
-          <p className="inline-block px-3 py-1 bg-[#1a1a1a] text-white text-xs font-medium mb-4">
-            Disponible para proyectos
-          </p>
-
-          <h1 className="text-5xl md:text-6xl font-bold text-[#1a1a1a] mb-4 tracking-tight leading-none">
-            Isaac Tenorio López
-          </h1>
-
-          <p className="text-lg text-[#666] mb-5">
+          <p className="text-lg text-[#888] mb-5">
             Desarrollador de Software · Especialista en Bases de Datos
           </p>
 
-          <p className="text-[#888] max-w-md mb-10 leading-relaxed">
+          <p className="text-[#aaa] max-w-md mb-10 leading-relaxed">
             Transformo datos en información accionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
           </p>
 
@@ -83,7 +85,7 @@ export default function HomePage() {
               href="https://github.com/IsaacLopez777/Portafolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border-2 border-[#1a1a1a] hover:bg-[#f5f5f5] transition-colors"
+              className="px-5 py-2.5 bg-white text-[#1a1a1a] text-sm font-medium rounded-lg border-2 border-[#e5e5e5] hover:bg-[#f5f5f5] transition-colors"
             >
               GitHub
             </a>
@@ -91,37 +93,37 @@ export default function HomePage() {
         </header>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
+          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
 
-          <div className="border-l-2 border-[#1a1a1a] pl-6">
+          <div className="border-l-2 border-[#e5e5e5] pl-6">
             <div className="mb-2">
-              <span className="inline-block px-2 py-0.5 bg-[#f0f0f0] text-[#666] text-xs font-medium rounded">
+              <span className="inline-block px-2 py-0.5 bg-[#f5f5f5] text-[#666] text-xs font-medium rounded">
                 Nexsys Centroamérica
               </span>
-              <span className="inline-block px-2 py-0.5 bg-[#1a1a1a] text-white text-xs font-medium rounded ml-2">
+              <span className="inline-block px-2 py-0.5 bg-[#f5f5f5] text-[#999] text-xs font-medium rounded ml-2">
                 Departamento de Microsoft
               </span>
             </div>
             <h3 className="text-xl font-bold text-[#1a1a1a] mb-1">Desarrollador Backend</h3>
-            <p className="text-[#888] text-sm mb-4">Práctica Profesional</p>
-            <p className="text-[#666] leading-relaxed max-w-lg">
+            <p className="text-[#bbb] text-sm mb-4">Práctica Profesional</p>
+            <p className="text-[#888] leading-relaxed max-w-lg">
               Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
             </p>
           </div>
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Skills</h2>
+          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Skills</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {skills.map((group) => (
-              <div key={group.category} className="bg-white rounded-lg p-5 border border-[#e5e5e5]">
-                <h3 className="text-xs font-bold text-[#999] uppercase tracking-wider mb-3">{group.category}</h3>
+              <div key={group.category} className="bg-[#fafafa] rounded-lg p-5 border border-[#f0f0f0]">
+                <h3 className="text-xs font-bold text-[#bbb] uppercase tracking-wider mb-3">{group.category}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {group.items.map((skill) => (
                     <span
                       key={skill}
-                      className="px-2 py-1 bg-[#f5f5f5] text-[#333] text-xs font-medium rounded"
+                      className="px-2 py-1 bg-white text-[#555] text-xs font-medium rounded border border-[#eee]"
                     >
                       {skill}
                     </span>
@@ -133,7 +135,7 @@ export default function HomePage() {
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
+          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
 
           <div className="grid md:grid-cols-2 gap-4">
             {projects.map((project, i) => (
@@ -143,18 +145,18 @@ export default function HomePage() {
                 onMouseLeave={() => setHoveredProject(null)}
                 className={`bg-white rounded-lg p-5 border-2 transition-all cursor-pointer ${
                   hoveredProject === i
-                    ? 'border-[#1a1a1a]'
-                    : 'border-[#e5e5e5]'
+                    ? 'border-[#1a1a1a] shadow-lg'
+                    : 'border-[#f0f0f0]'
                 }`}
               >
-                <div className="w-8 h-8 bg-[#f0f0f0] rounded flex items-center justify-center mb-3">
+                <div className="w-8 h-8 bg-[#fafafa] rounded flex items-center justify-center mb-3">
                   <span className="text-sm">📁</span>
                 </div>
                 <h3 className="text-base font-bold text-[#1a1a1a] mb-2">{project.title}</h3>
                 <p className="text-[#888] text-sm mb-4 leading-relaxed">{project.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 bg-[#f0f0f0] text-[#666] text-xs rounded">
+                    <span key={tech} className="px-2 py-0.5 bg-[#fafafa] text-[#666] text-xs rounded border border-[#eee]">
                       {tech}
                     </span>
                   ))}
@@ -165,10 +167,10 @@ export default function HomePage() {
         </section>
 
         <section className="mb-20">
-          <h2 className="text-xs font-bold text-[#999] uppercase tracking-[0.2em] mb-8">Contacto</h2>
+          <h2 className="text-xs font-bold text-[#ccc] uppercase tracking-[0.2em] mb-8">Contacto</h2>
 
-          <div className="bg-[#1a1a1a] rounded-lg p-8 text-center">
-            <p className="text-[#999] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
+          <div className="bg-[#fafafa] rounded-lg p-8 text-center border border-[#f0f0f0]">
+            <p className="text-[#888] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
             <a
               href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
               target="_blank"
@@ -177,13 +179,13 @@ export default function HomePage() {
             >
               💬 WhatsApp
             </a>
-            <p className="text-[#666] text-sm mt-5">Lopeztenorio58@gmail.com</p>
+            <p className="text-[#aaa] text-sm mt-5">Lopeztenorio58@gmail.com</p>
           </div>
         </section>
 
-        <footer className="text-center py-8 border-t border-[#e5e5e5]">
-          <p className="text-[#999]">© 2026 Isaac Tenorio López</p>
-          <p className="text-[#bbb] text-sm mt-1">Tres Ríos, Costa Rica</p>
+        <footer className="text-center py-8 border-t border-[#f0f0f0]">
+          <p className="text-[#bbb]">© 2026 Isaac Tenorio López</p>
+          <p className="text-[#ddd] text-sm mt-1">Tres Ríos, Costa Rica</p>
         </footer>
       </div>
     </div>
