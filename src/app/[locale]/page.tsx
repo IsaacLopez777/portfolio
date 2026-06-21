@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 export default function HomePage() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
@@ -44,8 +45,13 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#FAFAFA]">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <header className="mb-24">
-          <div className="w-16 h-16 bg-[#1a1a1a] rounded-full flex items-center justify-center text-white text-xl font-bold mb-8">
-            I
+          <div className="relative w-20 h-20 mb-8 rounded-full overflow-hidden border-2 border-[#e5e5e5]">
+            <Image
+              src="/images/Isaac.png"
+              alt="Isaac Tenorio López"
+              fill
+              className="object-cover"
+            />
           </div>
 
           <p className="inline-block px-3 py-1 bg-[#1a1a1a] text-white text-xs font-medium mb-4">
