@@ -118,34 +118,34 @@ export default function HomePage() {
           </div>
         </header>
 
-        <section className="mb-20">
-          <div className="bg-white rounded-2xl border border-[#f0f0f5] shadow-lg shadow-blue-100/50 p-8 md:flex md:items-center md:gap-8">
-            <div className="flex-shrink-0 flex justify-center mb-6 md:mb-0">
-              <div className="w-20 h-20 bg-[#e8f4ff] rounded-2xl flex items-center justify-center">
-                <svg className="w-10 h-10 text-[#3a86ff] animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{animationDuration: '2s'}}>
+        <section className="mb-12">
+          <div className="group bg-white rounded-xl border border-[#f0f0f5] shadow-sm hover:shadow-md hover:border-[#3a86ff]/30 p-5 md:flex md:items-center md:justify-between md:gap-6 transition-all duration-300 cursor-pointer">
+            <div className="flex items-center gap-4">
+              <div className="w-11 h-11 bg-[#e8f4ff] rounded-xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105">
+                <svg className="w-5 h-5 text-[#3a86ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-            </div>
-            <div className="flex-1 text-center md:text-left">
-              <div className="flex flex-col md:flex-row md:items-center gap-2 mb-2">
-                <h3 className="text-xl font-bold text-[#1a1a2e]">Descarga mi CV</h3>
-                <span className="inline-block px-2 py-0.5 bg-[#e8f4ff] text-[#3a86ff] text-xs font-semibold rounded-full">PDF · 115 KB</span>
+              <div>
+                <div className="flex items-center gap-2 mb-0.5">
+                  <h3 className="text-[15px] font-bold text-[#1a1a2e]">Descarga mi CV</h3>
+                  <span className="px-1.5 py-0.5 bg-[#e8f4ff] text-[#3a86ff] text-[10px] font-semibold rounded">PDF · 115 KB</span>
+                </div>
+                <p className="text-[13px] text-[#6b7280]">Conoce mi experiencia, habilidades y formación completa</p>
+                <p className="text-[11px] text-[#aaa]">Actualizado: junio 2026</p>
               </div>
-              <p className="text-[#6b7280] mb-5">Conoce más sobre mi experiencia, habilidades y formación en mi currículum completo.</p>
-              <a
-                href="/CV/Isaac_Tenorio_Lopez_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#3a86ff] text-white text-sm font-semibold rounded-xl hover:bg-[#2563eb] transition-all hover:shadow-lg hover:shadow-blue-200 group"
-              >
-                <svg className="w-4 h-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Descargar CV
-              </a>
-              <p className="text-xs text-[#aaa] mt-3">Última actualización: Junio 2026</p>
             </div>
+            <a
+              href="/CV/Isaac_Tenorio_Lopez_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 bg-[#3a86ff] text-white text-[13px] font-semibold rounded-lg hover:bg-[#2563eb] transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Descargar
+            </a>
           </div>
         </section>
 
