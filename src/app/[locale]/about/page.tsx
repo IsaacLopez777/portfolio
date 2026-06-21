@@ -11,11 +11,11 @@ export default async function AboutPage({ params }: AboutPageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-3xl mx-auto px-6 py-16">
+      <div className="max-w-6xl mx-auto px-6 py-16">
         <h1 className="text-4xl font-bold text-[#1a1a2e] mb-12">Sobre mí</h1>
 
         <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Objetivo</h2>
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Objetivo</h2>
           <p className="text-[#555] leading-relaxed bg-[#fafafa] p-8 rounded-xl border border-[#f0f0f5]">
             Apasionado por el desarrollo de software y la gestión de datos, enfocado en la creación
             de soluciones eficientes, escalables y orientadas al análisis de información.
@@ -25,8 +25,9 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </p>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Experiencia</h2>
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
+
           <div className="flex gap-6">
             <div className="flex flex-col items-center">
               <div className="w-3 h-3 bg-[#3a86ff] rounded-full"></div>
@@ -59,8 +60,8 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Educación</h2>
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Educación</h2>
           <div className="bg-[#fafafa] rounded-xl p-8 border border-[#f0f0f5]">
             <h3 className="text-lg font-bold text-[#1a1a2e]">Ingeniería en Sistemas de Computación</h3>
             <p className="text-[#3a86ff] font-medium mt-1">Universidad Fidélitas</p>
@@ -72,16 +73,16 @@ export default async function AboutPage({ params }: AboutPageProps) {
           </div>
         </section>
 
-        <section className="mb-16">
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-6">Certificaciones</h2>
-          <div className="space-y-3">
+        <section className="mb-20">
+          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Certificaciones</h2>
+          <div className="grid grid-cols-2 gap-4">
             {[
               { name: 'Scrum Master', desc: 'Metodología ágil para gestión de proyectos de software', icon: '/images/scrum-logo.jpg' },
               { name: 'Cisco CCNA 1', desc: 'Configuración de redes y protocolos de comunicación', icon: '/images/LOGO_Cisco_CCNA.png' },
               { name: 'Cisco CCNA 2', desc: 'Routing y conmutación de redes', icon: '/images/LOGO_Cisco_CCNA.png' },
               { name: 'Cisco CCNA 3', desc: 'Administración de infraestructura tecnológica', icon: '/images/LOGO_Cisco_CCNA.png' },
             ].map((cert, i) => (
-              <div key={i} className="bg-[#fafafa] rounded-xl p-5 border border-[#f0f0f5] flex items-center gap-4">
+              <div key={i} className="bg-[#fafafa] rounded-xl p-5 border border-[#f0f0f5] flex items-center gap-4 hover:border-[#3a86ff] transition-all">
                 <div className="w-14 h-14 relative flex-shrink-0">
                   <Image src={cert.icon} alt={cert.name} fill className="object-contain rounded" />
                 </div>
