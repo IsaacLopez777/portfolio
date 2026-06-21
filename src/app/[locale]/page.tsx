@@ -47,7 +47,7 @@ export default function HomePage() {
         <header className="mb-24">
           <div className="relative w-20 h-20 mb-8 rounded-full overflow-hidden border-2 border-[#e5e5e5]">
             <Image
-              src="/images/Isaac.png"
+              src="/images/Isaac.jpg"
               alt="Isaac Tenorio López"
               fill
               className="object-cover"
