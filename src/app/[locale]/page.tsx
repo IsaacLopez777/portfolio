@@ -9,9 +9,9 @@ export default function HomePage() {
   const skills = [
     { category: 'Lenguajes', items: ['JavaScript', 'Java', 'C#', 'SQL'] },
     { category: 'Frameworks', items: ['Spring Boot', '.NET'] },
-    { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'MySQL'] },
-    { category: 'Cloud', items: ['Azure', 'Firebase'] },
-    { category: 'Mobile', items: ['FlutterFlow'] },
+    { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'MySQL', 'SQL'] },
+    { category: 'Cloud', items: ['AWS', 'Azure', 'Firebase'] },
+    { category: 'DevOps', items: ['Despliegues', 'Docker', 'CI/CD'] },
   ];
 
   const projects = [

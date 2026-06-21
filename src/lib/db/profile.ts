@@ -61,10 +61,11 @@ export const projects: Project[] = [
 ];
 
 export const skills: Skill[] = [
-  { category: 'Lenguajes', technologies: ['TypeScript', 'Java', 'C#', 'SQL'] },
-  { category: 'Frameworks', technologies: ['React', 'Next.js', 'Spring Boot', '.NET'] },
-  { category: 'Bases de Datos', technologies: ['SQL Server', 'Oracle', 'PostgreSQL', 'MySQL'] },
-  { category: 'Cloud', technologies: ['Azure', 'Firebase', 'Docker'] }
+  { category: 'Lenguajes', technologies: ['JavaScript', 'Java', 'C#', 'SQL'] },
+  { category: 'Frameworks', technologies: ['Spring Boot', '.NET'] },
+  { category: 'Bases de Datos', technologies: ['SQL Server', 'Oracle', 'MySQL', 'SQL'] },
+  { category: 'Cloud', technologies: ['AWS', 'Azure', 'Firebase'] },
+  { category: 'DevOps', technologies: ['Despliegues', 'Docker', 'CI/CD'] }
 ];
 
 export const references = {
