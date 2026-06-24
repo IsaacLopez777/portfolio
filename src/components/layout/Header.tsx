@@ -27,22 +27,22 @@ export function Header({ locale }: HeaderProps) {
   };
 
   return (
-    <header className="bg-white border-b border-[#f0f0f5] sticky top-0 z-50">
+    <header className="glass border-b border-white/40 sticky top-0 z-50">
       <nav className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
-          <Link href={`/${locale}`} className="text-xl font-bold text-[#1a1a2e]">
-            isaac<span className="text-[#3a86ff]">.</span>
+          <Link href={`/${locale}`} className="text-xl font-extrabold tracking-tight text-[#0E1726]">
+            isaac<span className="gradient-text">.</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1 bg-[#fafafa] rounded-full px-2 py-1 border border-[#f0f0f5]">
+          <div className="hidden md:flex items-center gap-1 bg-white/70 rounded-full px-2 py-1 border border-[#E9EDF5] shadow-[var(--shadow-xs)]">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-colors ${
+                className={`px-4 py-2 text-sm font-semibold rounded-full transition-all ${
                   pathname === item.href || (item.href === `/${locale}` && pathname === `/${locale}`)
-                    ? 'bg-[#1a1a2e] text-white'
-                    : 'text-[#6b7280] hover:text-[#1a1a2e]'
+                    ? 'text-white shadow-[var(--shadow-glow)] [background:var(--grad-brand)]'
+                    : 'text-[#475569] hover:text-[#0E1726] hover:bg-white'
                 }`}
               >
                 {item.label}
@@ -51,19 +51,19 @@ export function Header({ locale }: HeaderProps) {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
-            <div className="flex items-center gap-1 bg-[#fafafa] rounded-lg px-1 py-1 border border-[#f0f0f5]">
+            <div className="flex items-center gap-1 bg-white/70 rounded-xl px-1 py-1 border border-[#E9EDF5]">
               <button
                 onClick={() => switchLocale('es')}
-                className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${
-                  locale === 'es' ? 'bg-[#1a1a2e] text-white' : 'text-[#6b7280] hover:bg-[#f0f0f5]'
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  locale === 'es' ? 'text-white [background:var(--grad-brand)]' : 'text-[#475569] hover:bg-white'
                 }`}
               >
                 ES
               </button>
               <button
                 onClick={() => switchLocale('en')}
-                className={`px-3 py-1 text-xs font-medium rounded-lg transition-all ${
-                  locale === 'en' ? 'bg-[#1a1a2e] text-white' : 'text-[#6b7280] hover:bg-[#f0f0f5]'
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  locale === 'en' ? 'text-white [background:var(--grad-brand)]' : 'text-[#475569] hover:bg-white'
                 }`}
               >
                 EN
@@ -76,7 +76,7 @@ export function Header({ locale }: HeaderProps) {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
-            <svg className="w-5 h-5 text-[#6b7280]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-[#475569]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {isOpen ? (
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
@@ -87,17 +87,39 @@ export function Header({ locale }: HeaderProps) {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pb-4">
+          <div className="md:hidden pt-3 pb-2 flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block py-2 text-sm text-[#6b7280]"
+                className={`block px-4 py-2.5 text-sm font-semibold rounded-xl transition-all ${
+                  pathname === item.href || (item.href === `/${locale}` && pathname === `/${locale}`)
+                    ? 'text-white [background:var(--grad-brand)]'
+                    : 'text-[#475569] hover:bg-white'
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
+            <div className="flex items-center gap-1 mt-2 bg-white/70 rounded-xl px-1 py-1 border border-[#E9EDF5] w-fit">
+              <button
+                onClick={() => switchLocale('es')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  locale === 'es' ? 'text-white [background:var(--grad-brand)]' : 'text-[#475569]'
+                }`}
+              >
+                ES
+              </button>
+              <button
+                onClick={() => switchLocale('en')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all ${
+                  locale === 'en' ? 'text-white [background:var(--grad-brand)]' : 'text-[#475569]'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         )}
       </nav>

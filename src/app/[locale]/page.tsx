@@ -43,32 +43,45 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <header className="mb-24">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <header className="mb-28 pt-6">
+          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.p
-                className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#f0f0f5] rounded-full text-sm text-[#555] mb-6 border border-[#e5e5ea]"
+              <motion.div
+                className="inline-flex items-center gap-2.5 mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
-                whileHover={{ scale: 1.02 }}
               >
-                <motion.span
-                  className="w-2 h-2 bg-[#3a86ff] rounded-full"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                Disponible para proyectos
+                <span className="relative flex h-2 w-2">
+                  <motion.span
+                    className="absolute inline-flex h-full w-full rounded-full bg-[#22B8CF] opacity-60"
+                    animate={{ scale: [1, 2.4, 1], opacity: [0.6, 0, 0.6] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22B8CF]" />
+                </span>
+                <span className="mono text-xs font-medium text-[#64748B] tracking-tight">
+                  disponible para proyectos
+                </span>
+              </motion.div>
+
+              <motion.p
+                className="mono text-sm text-[#3A86FF] mb-3"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.5 }}
+              >
+                &lt;/&gt; Backend &amp; Data Engineer
               </motion.p>
 
               <motion.h1
-                className="text-4xl md:text-5xl font-bold text-[#1a1a2e] mb-4 leading-tight"
+                className="text-[2.75rem] md:text-[3.75rem] font-extrabold text-[#0E1726] mb-6 leading-[1.02] tracking-[-0.03em]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
@@ -76,23 +89,18 @@ export default function HomePage() {
                 Isaac Tenorio López
               </motion.h1>
 
-              <motion.p
-                className="text-lg text-[#3a86ff] font-medium mb-4"
+              <motion.div
+                className="flex items-start gap-4 mb-9 max-w-md"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
+                transition={{ delay: 0.35, duration: 0.5 }}
               >
-                Desarrollador de Software · Especialista en Bases de Datos
-              </motion.p>
-
-              <motion.p
-                className="text-[#6b7280] mb-8 leading-relaxed max-w-md"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
-                Transformo datos en información accionable para el negocio. Apasionado por crear soluciones eficientes y escalables.
-              </motion.p>
+                <span className="mt-2.5 h-12 w-[3px] rounded-full flex-shrink-0" style={{ background: 'var(--grad-brand)' }} />
+                <p className="text-[#64748B] leading-relaxed">
+                  Transformo datos en información accionable para el negocio. Especialista en bases de datos,
+                  desarrollo backend y automatización de procesos.
+                </p>
+              </motion.div>
 
               <motion.div
                 className="flex flex-wrap gap-3"
@@ -104,8 +112,8 @@ export default function HomePage() {
                   href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#3a86ff] text-white text-sm font-semibold rounded-lg shadow-md"
-                  whileHover={{ scale: 1.05, boxShadow: '0 10px 25px -5px rgba(58, 134, 255, 0.4)' }}
+                  className="btn-primary"
+                  whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
@@ -118,8 +126,8 @@ export default function HomePage() {
                   href="https://github.com/IsaacLopez777/Portafolio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-[#1a1a2e] text-sm font-semibold rounded-lg border-2 border-[#e5e5ea]"
-                  whileHover={{ scale: 1.05, backgroundColor: '#f9fafb' }}
+                  className="btn-ghost"
+                  whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
@@ -131,8 +139,8 @@ export default function HomePage() {
                 <motion.a
                   href="/CV/Isaac_Tenorio_Lopez_CV.pdf"
                   download
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1a1a2e] text-white text-sm font-semibold rounded-lg shadow-md"
-                  whileHover={{ scale: 1.05, backgroundColor: '#2a2a3e' }}
+                  className="btn-dark"
+                  whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
@@ -142,121 +150,155 @@ export default function HomePage() {
                   Descargar CV
                 </motion.a>
               </motion.div>
+
+              {/* Stat strip — sustancia real en vez de burbujas */}
+              <motion.div
+                className="flex flex-wrap gap-x-10 gap-y-6 mt-11 pt-9 border-t border-[#E9EDF5]"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+              >
+                {[
+                  { num: '+4', label: 'Proyectos\nentregados' },
+                  { num: '4', label: 'Certificaciones\ntécnicas' },
+                  { num: 'MS', label: 'Práctica en\nMicrosoft' },
+                ].map((stat) => (
+                  <div key={stat.label}>
+                    <div className="text-3xl font-extrabold text-[#0E1726] tracking-tight leading-none mb-2">
+                      {stat.num}
+                    </div>
+                    <div className="mono text-[0.7rem] leading-tight text-[#94A3B8] whitespace-pre-line">
+                      {stat.label}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
 
+            {/* RIGHT — retrato fundido con el fondo */}
             <motion.div
-              className="flex justify-center relative"
-              initial={{ opacity: 0, scale: 0.8 }}
+              className="relative flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.94 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <motion.div
-                className="relative"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              >
+              <div className="relative w-full max-w-[330px]">
+                {/* Halo de marca que se funde con la aurora del fondo */}
                 <motion.div
-                  className="absolute inset-0 bg-[#3a86ff] rounded-full opacity-20 blur-3xl"
-                  animate={{ scale: [0.9, 1.1, 0.9], opacity: [0.2, 0.3, 0.2] }}
-                  transition={{ duration: 4, repeat: Infinity }}
+                  className="absolute -inset-10 rounded-full opacity-60 blur-[70px]"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 42%, rgba(58,134,255,0.45) 0%, rgba(123,92,252,0.22) 45%, transparent 72%)',
+                  }}
+                  animate={{ scale: [0.95, 1.05, 0.95] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+
+                {/* Anillo punteado decorativo que ecoa el fondo */}
+                <div
+                  className="absolute inset-2 rounded-[3rem] opacity-60"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle at 1px 1px, rgba(58,134,255,0.25) 1px, transparent 0)',
+                    backgroundSize: '14px 14px',
+                    transform: 'rotate(-3deg) scale(1.06)',
+                    maskImage: 'linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent)',
+                  }}
+                />
+
+                {/* Retrato — squircle, sombra tintada difusa, sin marco duro */}
+                <motion.div
+                  className="relative aspect-[4/5] rounded-[2.75rem] overflow-hidden ring-1 ring-white/70"
+                  style={{ boxShadow: '0 40px 80px -28px rgba(58, 99, 240, 0.55)' }}
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                >
                   <Image
                     src="/images/Isaac.jpg"
                     alt="Isaac Tenorio López"
                     fill
                     className="object-cover"
+                    priority
                   />
-                </div>
-              </motion.div>
+                  {/* Tinte de marca arriba para unificar color con la página */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-[#3A86FF]/12 via-transparent to-transparent" />
+                  {/* Fundido inferior + pill de estado */}
+                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 glass rounded-2xl px-3.5 py-2.5 shadow-sm">
+                    <span className="relative flex h-2 w-2 flex-shrink-0">
+                      <motion.span
+                        className="absolute inline-flex h-full w-full rounded-full bg-[#22B8CF] opacity-60"
+                        animate={{ scale: [1, 2.2, 1], opacity: [0.6, 0, 0.6] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22B8CF]" />
+                    </span>
+                    <span className="text-[0.76rem] font-bold text-[#0E1726]">Abierto a oportunidades</span>
+                  </div>
+                </motion.div>
 
-              <motion.div
-                className="absolute -top-2 -right-2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]"
-                animate={{ y: [0, -5, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-              >
-                SQL
-              </motion.div>
-              <motion.div
-                className="absolute -bottom-1 -left-3 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]"
-                animate={{ y: [0, 5, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 3.5, repeat: Infinity, delay: 0.2 }}
-              >
-                JS
-              </motion.div>
-              <motion.div
-                className="absolute top-1/2 -right-5 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold text-[#3a86ff] border border-[#e5e5ea]"
-                animate={{ y: [0, -3, 0], x: [0, 3, 0] }}
-                transition={{ duration: 2.5, repeat: Infinity, delay: 0.7 }}
-              >
-                DB
-              </motion.div>
-
-              <motion.div
-                className="absolute top-4 left-0 flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-md border border-[#f0f0f5]"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-              >
-                <span className="text-[#ff6b6b]">❤️</span>
-                <span className="text-xs font-semibold text-[#1a1a2e]">4 proyectos</span>
-              </motion.div>
-              <motion.div
-                className="absolute bottom-8 -left-4 flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-md border border-[#f0f0f5]"
-                animate={{ x: [0, -5, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, delay: 0.5 }}
-              >
-                <span className="text-[#3a86ff]">💬</span>
-                <span className="text-xs font-semibold text-[#1a1a2e]">Disponible</span>
-              </motion.div>
+                {/* Un solo detalle flotante: stack — apoyado, sutil, legible */}
+                <motion.div
+                  className="absolute top-6 -right-3 sm:-right-5 glass rounded-2xl px-3.5 py-3 shadow-[var(--shadow-md)]"
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
+                  transition={{ x: { delay: 0.8 }, opacity: { delay: 0.8 }, y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' } }}
+                >
+                  <p className="mono text-[0.58rem] text-[#94A3B8] mb-1.5 uppercase tracking-wider">stack</p>
+                  <div className="flex flex-col gap-1">
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#3A86FF]" /> SQL Server
+                    </span>
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#5B63F0]" /> Spring Boot
+                    </span>
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#22B8CF]" /> Java · C#
+                    </span>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </header>
 
         <motion.section
-          className="mb-20"
+          className="mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Experiencia</h2>
+          <h2 className="eyebrow mb-8">Experiencia</h2>
 
           <div className="flex gap-6">
             <motion.div
-              className="flex flex-col items-center"
+              className="flex flex-col items-center pt-2"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
               <motion.div
-                className="w-3 h-3 bg-[#3a86ff] rounded-full"
-                animate={{ scale: [1, 1.3, 1] }}
+                className="w-3.5 h-3.5 rounded-full ring-4 ring-[#EAF1FF]"
+                style={{ background: 'var(--grad-brand)' }}
+                animate={{ scale: [1, 1.25, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <div className="w-0.5 h-full bg-[#e5e5ea] mt-2" />
+              <div className="w-0.5 h-full bg-gradient-to-b from-[#C7D7FF] to-transparent mt-2" />
             </motion.div>
             <motion.div
-              className="flex-1 bg-[#fafafa] rounded-xl p-6 border border-[#f0f0f5] shadow-sm mb-6 hover:shadow-md transition-shadow"
-              whileHover={{ scale: 1.01 }}
+              className="flex-1 card-premium p-7 mb-6"
+              whileHover={{ y: -4 }}
             >
-              <div className="flex flex-wrap gap-2 mb-3">
-                <motion.span
-                  className="px-2.5 py-1 bg-[#e8f4ff] text-[#3a86ff] text-xs font-medium rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Nexsys Centroamérica
-                </motion.span>
-                <motion.span
-                  className="px-2.5 py-1 bg-[#f0f0f5] text-[#555] text-xs font-medium rounded-full"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  Departamento de Microsoft
-                </motion.span>
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="chip chip-brand">Nexsys Centroamérica</span>
+                <span className="chip">Departamento de Microsoft</span>
               </div>
-              <h3 className="text-lg font-bold text-[#1a1a2e] mb-1">Desarrollador Backend</h3>
-              <p className="text-sm text-[#6b7280] mb-3">Práctica Profesional</p>
-              <p className="text-[#555] leading-relaxed">
+              <h3 className="text-xl font-bold text-[#0E1726] mb-1">Desarrollador Backend</h3>
+              <p className="text-sm font-medium text-[#3A86FF] mb-3">Práctica Profesional</p>
+              <p className="text-[#64748B] leading-relaxed">
                 Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
               </p>
             </motion.div>
@@ -264,32 +306,32 @@ export default function HomePage() {
         </motion.section>
 
         <motion.section
-          className="mb-20"
+          className="mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Skills</h2>
+          <h2 className="eyebrow mb-8">Skills</h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {skills.map((group, i) => (
               <motion.div
                 key={group.category}
-                className="bg-[#fafafa] rounded-xl p-4 border border-[#f0f0f5]"
+                className="panel-soft p-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -6 }}
               >
-                <h3 className="text-xs font-semibold text-[#3a86ff] uppercase tracking-wider mb-2">{group.category}</h3>
+                <h3 className="text-[0.7rem] font-extrabold text-[#3A86FF] uppercase tracking-[0.12em] mb-3">{group.category}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {group.items.map((skill) => (
                     <motion.span
                       key={skill}
-                      className="px-2 py-1 bg-white text-[#555] text-xs font-medium rounded border border-[#e5e5ea]"
-                      whileHover={{ scale: 1.1, backgroundColor: '#3a86ff', color: '#fff', borderColor: '#3a86ff' }}
+                      className="chip text-[0.72rem] cursor-default"
+                      whileHover={{ scale: 1.08, y: -2 }}
                     >
                       {skill}
                     </motion.span>
@@ -301,43 +343,42 @@ export default function HomePage() {
         </motion.section>
 
         <motion.section
-          className="mb-20"
+          className="mb-24"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Proyectos</h2>
+          <h2 className="eyebrow mb-8">Proyectos</h2>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-5">
             {projects.map((project, i) => (
               <motion.div
                 key={project.id}
                 onMouseEnter={() => setHoveredProject(i)}
                 onMouseLeave={() => setHoveredProject(null)}
-                className={`bg-white rounded-xl p-5 border cursor-pointer ${
-                  hoveredProject === i
-                    ? 'border-[#3a86ff] shadow-lg shadow-blue-100'
-                    : 'border-[#f0f0f5] shadow-sm'
-                }`}
+                className="card-premium p-6 cursor-pointer overflow-hidden group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
+                whileHover={{ y: -6 }}
               >
                 <motion.div
-                  className="w-8 h-8 bg-[#fafafa] rounded flex items-center justify-center mb-3"
-                  animate={hoveredProject === i ? { rotate: [0, 10, -10, 0] } : {}}
-                  transition={{ duration: 0.3 }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-white shadow-[var(--shadow-glow)]"
+                  style={{ background: 'var(--grad-brand)' }}
+                  animate={hoveredProject === i ? { rotate: [0, 8, -8, 0] } : {}}
+                  transition={{ duration: 0.4 }}
                 >
-                  <span className="text-sm">📁</span>
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+                  </svg>
                 </motion.div>
-                <h3 className="text-base font-bold text-[#1a1a2e] mb-2">{project.title}</h3>
-                <p className="text-sm text-[#6b7280] mb-4 leading-relaxed">{project.desc}</p>
+                <h3 className="text-lg font-bold text-[#0E1726] mb-2">{project.title}</h3>
+                <p className="text-sm text-[#64748B] mb-5 leading-relaxed">{project.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 bg-[#f0f0f5] text-[#555] text-xs rounded">
+                    <span key={tech} className="chip text-[0.72rem]">
                       {tech}
                     </span>
                   ))}
@@ -354,31 +395,39 @@ export default function HomePage() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs font-bold text-[#3a86ff] uppercase tracking-[0.2em] mb-8">Contacto</h2>
+          <h2 className="eyebrow mb-8">Contacto</h2>
 
           <motion.div
-            className="bg-[#fafafa] rounded-xl p-8 text-center border border-[#f0f0f5]"
+            className="relative overflow-hidden rounded-[24px] p-10 text-center text-white shadow-[var(--shadow-lg)]"
+            style={{ background: 'var(--grad-ink)' }}
             whileHover={{ scale: 1.01 }}
           >
-            <p className="text-[#6b7280] mb-5">¿Tienes un proyecto en mente? ¡Hablemos!</p>
-            <motion.a
-              href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white text-sm font-semibold rounded-lg shadow-md"
-              whileHover={{ scale: 1.05, boxShadow: '0 15px 30px -5px rgba(37, 211, 102, 0.4)' }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-            >
-              💬 WhatsApp
-            </motion.a>
-            <p className="text-[#aaa] text-sm mt-5">Lopeztenorio58@gmail.com</p>
+            {/* glow accents */}
+            <div className="absolute -top-16 -right-10 w-56 h-56 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #3A86FF, transparent 70%)' }} />
+            <div className="absolute -bottom-20 -left-10 w-56 h-56 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #9B5CFC, transparent 70%)' }} />
+            <div className="relative">
+              <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#ffffff' }}>¿Tienes un proyecto en mente?</h3>
+              <p className="mb-7" style={{ color: 'rgba(255,255,255,0.78)' }}>Hablemos y construyamos algo grande juntos.</p>
+              <motion.a
+                href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-whatsapp"
+                whileTap={{ scale: 0.97 }}
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.413c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Escríbeme por WhatsApp
+              </motion.a>
+              <p className="text-white/70 text-sm mt-6">lopeztenorio58@gmail.com</p>
+            </div>
           </motion.div>
         </motion.section>
 
-        <footer className="text-center py-8 border-t border-[#f0f0f5]">
-          <p className="text-[#6b7280]">© 2026 Isaac Tenorio López</p>
-          <p className="text-[#aaa] text-sm mt-1">Tres Ríos, Costa Rica</p>
+        <footer className="text-center py-8 border-t border-[#E9EDF5]">
+          <p className="text-[#64748B]">© 2026 Isaac Tenorio López</p>
+          <p className="text-[#94A3B8] text-sm mt-1">Tres Ríos, Costa Rica</p>
         </footer>
       </div>
     </div>

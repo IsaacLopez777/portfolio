@@ -1,52 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --primary: #1E3A5F;
-  --primary-light: #2D5A87;
-  --accent: #0D9488;
-  --accent-light: #14B8A6;
-  --background: #FAFBFC;
+  /* Surfaces & ink */
+  --bg: #F6F8FC;
   --surface: #FFFFFF;
-  --text-primary: #1F2937;
-  --text-secondary: #4B5563;
-  --text-muted: #9CA3AF;
-  --border: #E5E7EB;
+  --surface-soft: #FBFCFE;
+  --ink: #0E1726;
+  --ink-soft: #475569;
+  --muted: #8A95A6;
+  --border: #E9EDF5;
+  --border-soft: #F1F4FA;
+
+  /* Brand */
+  --brand: #3A86FF;
+  --brand-deep: #2563EB;
+  --violet: #7C5CFC;
+  --cyan: #22B8CF;
+
+  /* Gradients — sober, two-stop (no AI rainbow) */
+  --grad-brand: linear-gradient(135deg, #3A86FF 0%, #5B63F0 100%);
+  --grad-soft: linear-gradient(135deg, #EEF4FF 0%, #F3EEFF 100%);
+  --grad-ink: linear-gradient(135deg, #1B2436 0%, #0E1726 100%);
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(14, 23, 38, 0.05);
+  --shadow-sm: 0 1px 2px rgba(14, 23, 38, 0.04), 0 2px 6px rgba(14, 23, 38, 0.05);
+  --shadow-md: 0 6px 16px -6px rgba(14, 23, 38, 0.10), 0 10px 30px -10px rgba(14, 23, 38, 0.08);
+  --shadow-lg: 0 18px 40px -16px rgba(28, 47, 92, 0.22);
+  --shadow-glow: 0 22px 48px -18px rgba(58, 134, 255, 0.45);
+
+  --radius: 20px;
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--ink-soft);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(58, 134, 255, 0.18);
+    color: var(--ink);
+  }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ---------- Reusable premium primitives ---------- */
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
+  font-feature-settings: 'liga' 0;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--text-primary);
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.7;
+.gradient-text {
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-h1, h2, h3, h4 {
-  color: var(--text-primary);
-  line-height: 1.3;
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--grad-brand);
+}
+
+/* Card with layered depth + sheen on hover */
+.card-premium {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
+}
+
+.card-premium:hover {
+  border-color: rgba(58, 134, 255, 0.35);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Soft tinted panel (replaces flat #fafafa blocks) */
+.panel-soft {
+  background: linear-gradient(160deg, #FFFFFF 0%, var(--surface-soft) 100%);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Buttons */
+.btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fff;
+  border-radius: 14px;
+  background: var(--grad-brand);
+  background-size: 160% 160%;
+  box-shadow: var(--shadow-glow);
+  transition: background-position 0.6s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-position: 100% 50%;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--ink);
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(58, 134, 255, 0.4);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #fff;
+  border-radius: 14px;
+  background: var(--grad-ink);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  box-shadow: 0 14px 30px -10px rgba(18, 140, 126, 0.6);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 38px -10px rgba(18, 140, 126, 0.7);
+}
+
+/* Chips / tags */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink-soft);
+  transition: all 0.25s ease;
+}
+
+.chip-brand {
+  background: linear-gradient(135deg, #EAF1FF 0%, #F0ECFF 100%);
+  border: 1px solid rgba(58, 134, 255, 0.18);
+  color: var(--brand-deep);
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.gradient-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-}
+.gradient-primary { background: var(--grad-brand); }
 
-.gradient-accent {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-}
-
+/* ---------- Animations ---------- */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
@@ -57,14 +239,14 @@ h1, h2, h3, h4 {
   100% { transform: scale(1.5); opacity: 0; }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4%, -3%) scale(1.08); }
 }
 
-.whatsapp-btn {
-  position: relative;
-}
+.animate-float { animation: float 3s ease-in-out infinite; }
 
+.whatsapp-btn { position: relative; }
 .whatsapp-btn::before {
   content: '';
   position: absolute;

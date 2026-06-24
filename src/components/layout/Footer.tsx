@@ -4,18 +4,18 @@ export function Footer() {
   const t = useTranslations('footer');
 
   return (
-    <footer className="bg-white border-t border-[#f0f0f5] py-6">
+    <footer className="glass border-t border-white/40 py-7">
       <div className="max-w-6xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-sm text-[#6b7280]">
-            © {new Date().getFullYear()} Isaac Tenorio López. {t('rights')}
+          <p className="text-sm text-[#64748B]">
+            © {new Date().getFullYear()} <span className="font-semibold text-[#0E1726]">Isaac Tenorio López</span>. {t('rights')}
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-5">
             <a
               href="https://www.linkedin.com/in/isaac-tenorio-8a0411288"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#6b7280] hover:text-[#3a86ff] transition-colors"
+              className="text-sm font-medium text-[#64748B] hover:text-[#3A86FF] transition-colors"
             >
               LinkedIn
             </a>
@@ -23,7 +23,7 @@ export function Footer() {
               href="https://github.com/IsaacLopez777/Portafolio"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-[#6b7280] hover:text-[#3a86ff] transition-colors"
+              className="text-sm font-medium text-[#64748B] hover:text-[#3A86FF] transition-colors"
             >
               GitHub
             </a>
