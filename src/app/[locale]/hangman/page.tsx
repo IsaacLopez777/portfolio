@@ -10,17 +10,6 @@ const WORDS = [
   'ARRAY', 'LOOP', 'CODE', 'DEBUG', 'COMPILE'
 ];
 
-const HANGMAN_PARTS = [
-  { id: 6, part: 'head' },
-  { id: 5, part: 'body' },
-  { id: 4, part: 'leftArm' },
-  { id: 3, part: 'rightArm' },
-  { id: 2, part: 'leftLeg' },
-  { id: 1, part: 'rightLeg' },
-];
-
-const KEYBOARD = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-
 function HangmanFigure({ wrongGuesses }: { wrongGuesses: number }) {
   return (
     <svg width="200" height="250" viewBox="0 0 200 250" className="mx-auto">
@@ -166,7 +155,7 @@ export default function HangmanPage() {
                 className="text-center mt-6"
               >
                 <p className={`text-xl font-bold mb-4 ${gameState === 'won' ? 'text-[#3a86ff]' : 'text-[#ff6b6b]'}`}>
-                  {gameState === 'won' ? '🎉 You Won!' : `😢 Game Over! The word was: ${word}`}
+                  {gameState === 'won' ? 'You Won!' : `Game Over! The word was: ${word}`}
                 </p>
                 <motion.button
                   onClick={handlePlayAgain}
@@ -187,7 +176,7 @@ export default function HangmanPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          {KEYBOARD.map(letter => {
+          {'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(letter => {
             const isGuessed = guessedLetters.includes(letter);
             const isWrong = isGuessed && !word.includes(letter);
             const isCorrect = isGuessed && word.includes(letter);
@@ -199,10 +188,10 @@ export default function HangmanPage() {
                 disabled={isGuessed || gameState !== 'playing'}
                 className={`p-3 text-lg font-bold rounded-lg border-2 transition-colors ${
                   isCorrect
-                    ? 'bg-[#dbeafe] border-[#3a86ff] text-[#3a86ff] cursor-default'
+                    ? 'bg-blue-100 border-blue-500 text-blue-600 cursor-default'
                     : isWrong
-                    ? 'bg-[#fee2e2] border-[#ff6b6b] text-[#ff6b6b] cursor-default'
-                    : 'bg-white border-[#e5e5ea] text-[#555] hover:bg-[#f0f0f5] hover:border-[#3a86ff]'
+                    ? 'bg-red-100 border-red-500 text-red-600 cursor-default'
+                    : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50 hover:border-blue-500'
                 }`}
                 whileHover={!isGuessed && gameState === 'playing' ? { scale: 1.1 } : {}}
                 whileTap={!isGuessed && gameState === 'playing' ? { scale: 0.95 } : {}}
@@ -219,7 +208,7 @@ export default function HangmanPage() {
           transition={{ delay: 0.5 }}
           className="text-center mt-8"
         >
-          <p className="text-sm text-[#aaa]">Wrong guesses: {wrongGuesses} / 6</p>
+          <p className="text-sm text-gray-400">Wrong guesses: {wrongGuesses} / 6</p>
         </motion.div>
       </div>
     </div>
