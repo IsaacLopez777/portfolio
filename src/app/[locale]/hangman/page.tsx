@@ -19,58 +19,71 @@ const CONFIRM_BEFORE_REVEAL = true;
 
 /* ============================================================
    BANCO DE PALABRAS — AGREGAR / EDITAR AQUÍ
-   { word, hint, category }
+   { word, hint, category, difficulty }
+
+   Niveles de dificultad:
+   - 'easy'   : palabras cortas y muy comunes (2-5 letras)
+   - 'normal' : palabras medianas (6-7 letras)
+   - 'hard'   : palabras largas o menos comunes (8+ letras)
    ============================================================ */
-type WordEntry = { word: string; hint: string; category: string };
+type Difficulty = 'easy' | 'normal' | 'hard';
+type WordEntry = { word: string; hint: string; category: string; difficulty: Difficulty };
 
 const WORD_BANK: WordEntry[] = [
   // Future "will"
-  { word: 'WILL', hint: "Auxiliary used for future predictions: 'I ___ travel tomorrow.'", category: "Future 'will'" },
-  { word: 'TOMORROW', hint: "Time reference often used with 'will': 'See you ___.'", category: "Future 'will'" },
-  { word: 'PREDICT', hint: 'Verb meaning to say what you think will happen.', category: "Future 'will'" },
-  { word: 'PROMISE', hint: "When you say you will definitely do something: 'I ___ to help.'", category: "Future 'will'" },
+  { word: 'WILL', hint: "Auxiliary used for future predictions: 'I ___ travel tomorrow.'", category: "Future 'will'", difficulty: 'easy' },
+  { word: 'TOMORROW', hint: "Time reference often used with 'will': 'See you ___.'", category: "Future 'will'", difficulty: 'hard' },
+  { word: 'PREDICT', hint: 'Verb meaning to say what you think will happen.', category: "Future 'will'", difficulty: 'normal' },
+  { word: 'PROMISE', hint: "When you say you will definitely do something: 'I ___ to help.'", category: "Future 'will'", difficulty: 'normal' },
 
   // Future "going to"
-  { word: 'GOING', hint: "Part of '___ to' for planned futures: 'I am ___ to study.'", category: "Future 'going to'" },
-  { word: 'PLAN', hint: 'Noun/verb — when you intend to do something in the future.', category: "Future 'going to'" },
-  { word: 'INTEND', hint: 'Verb meaning to have a plan or purpose.', category: "Future 'going to'" },
+  { word: 'GOING', hint: "Part of '___ to' for planned futures: 'I am ___ to study.'", category: "Future 'going to'", difficulty: 'easy' },
+  { word: 'PLAN', hint: 'Noun/verb — when you intend to do something in the future.', category: "Future 'going to'", difficulty: 'easy' },
+  { word: 'INTEND', hint: 'Verb meaning to have a plan or purpose.', category: "Future 'going to'", difficulty: 'normal' },
 
   // Verb to be
-  { word: 'AM', hint: "Verb 'to be' for 'I': 'I ___ a student.'", category: 'Verb to be' },
-  { word: 'IS', hint: "Verb 'to be' for he/she/it: 'She ___ happy.'", category: 'Verb to be' },
-  { word: 'ARE', hint: "Verb 'to be' for you/we/they: 'They ___ here.'", category: 'Verb to be' },
-  { word: 'WAS', hint: "Past of 'to be' for I/he/she/it: 'He ___ tired.'", category: 'Verb to be' },
-  { word: 'WERE', hint: "Past of 'to be' for you/we/they: 'They ___ happy.'", category: 'Verb to be' },
+  { word: 'AM', hint: "Verb 'to be' for 'I': 'I ___ a student.'", category: 'Verb to be', difficulty: 'easy' },
+  { word: 'IS', hint: "Verb 'to be' for he/she/it: 'She ___ happy.'", category: 'Verb to be', difficulty: 'easy' },
+  { word: 'ARE', hint: "Verb 'to be' for you/we/they: 'They ___ here.'", category: 'Verb to be', difficulty: 'easy' },
+  { word: 'WAS', hint: "Past of 'to be' for I/he/she/it: 'He ___ tired.'", category: 'Verb to be', difficulty: 'easy' },
+  { word: 'WERE', hint: "Past of 'to be' for you/we/they: 'They ___ happy.'", category: 'Verb to be', difficulty: 'easy' },
 
   // Present continuous
-  { word: 'PLAYING', hint: "Action happening right now: 'I am ___ a game.'", category: 'Present continuous' },
-  { word: 'STUDYING', hint: "Action in progress: 'She is ___ for an exam.'", category: 'Present continuous' },
-  { word: 'WORKING', hint: "Present action: 'They are ___ on a project.'", category: 'Present continuous' },
-  { word: 'LISTENING', hint: "Using your ears now: 'I am ___ to music.'", category: 'Present continuous' },
-  { word: 'WATCHING', hint: "Looking at something now: 'We are ___ a movie.'", category: 'Present continuous' },
+  { word: 'PLAYING', hint: "Action happening right now: 'I am ___ a game.'", category: 'Present continuous', difficulty: 'normal' },
+  { word: 'STUDYING', hint: "Action in progress: 'She is ___ for an exam.'", category: 'Present continuous', difficulty: 'hard' },
+  { word: 'WORKING', hint: "Present action: 'They are ___ on a project.'", category: 'Present continuous', difficulty: 'normal' },
+  { word: 'LISTENING', hint: "Using your ears now: 'I am ___ to music.'", category: 'Present continuous', difficulty: 'hard' },
+  { word: 'WATCHING', hint: "Looking at something now: 'We are ___ a movie.'", category: 'Present continuous', difficulty: 'hard' },
 
   // Past simple
-  { word: 'YESTERDAY', hint: "Past time word: 'I saw her ___.'", category: 'Past simple' },
-  { word: 'BEFORE', hint: "Means 'earlier than': 'Call me ___ you leave.'", category: 'Past simple' },
-  { word: 'LAST', hint: "Used with night/week/month: 'I went there ___ night.'", category: 'Past simple' },
+  { word: 'YESTERDAY', hint: "Past time word: 'I saw her ___.'", category: 'Past simple', difficulty: 'hard' },
+  { word: 'BEFORE', hint: "Means 'earlier than': 'Call me ___ you leave.'", category: 'Past simple', difficulty: 'normal' },
+  { word: 'LAST', hint: "Used with night/week/month: 'I went there ___ night.'", category: 'Past simple', difficulty: 'easy' },
 
   // Present simple
-  { word: 'WORK', hint: "Daily routine verb: 'I ___ in technology.'", category: 'Present simple' },
-  { word: 'LIVE', hint: "Where you reside: 'I ___ in Costa Rica.'", category: 'Present simple' },
-  { word: 'LIKE', hint: "Verb to express enjoyment: 'I ___ programming.'", category: 'Present simple' },
-  { word: 'SPEAK', hint: "Use your voice to communicate: 'I ___ Spanish.'", category: 'Present simple' },
+  { word: 'WORK', hint: "Daily routine verb: 'I ___ in technology.'", category: 'Present simple', difficulty: 'easy' },
+  { word: 'LIVE', hint: "Where you reside: 'I ___ in Costa Rica.'", category: 'Present simple', difficulty: 'easy' },
+  { word: 'LIKE', hint: "Verb to express enjoyment: 'I ___ programming.'", category: 'Present simple', difficulty: 'easy' },
+  { word: 'SPEAK', hint: "Use your voice to communicate: 'I ___ Spanish.'", category: 'Present simple', difficulty: 'normal' },
 
   // Vocabulary
-  { word: 'ENGINEER', hint: 'A person who designs systems or software.', category: 'Vocabulary' },
-  { word: 'SOFTWARE', hint: 'Programs that run on a computer.', category: 'Vocabulary' },
-  { word: 'KEYBOARD', hint: 'Device with keys used to type.', category: 'Vocabulary' },
-  { word: 'COMPUTER', hint: 'Electronic device for processing data.', category: 'Vocabulary' },
-  { word: 'INTERNET', hint: 'Global network connecting computers.', category: 'Vocabulary' },
-  { word: 'MUSIC', hint: 'Something you listen to for enjoyment.', category: 'Vocabulary' },
-  { word: 'HOBBY', hint: 'Something you enjoy doing in your free time.', category: 'Vocabulary' },
-  { word: 'FRIEND', hint: 'A person you know well and trust.', category: 'Vocabulary' },
-  { word: 'QUESTION', hint: 'You ask this when you want an answer.', category: 'Vocabulary' },
+  { word: 'ENGINEER', hint: 'A person who designs systems or software.', category: 'Vocabulary', difficulty: 'hard' },
+  { word: 'SOFTWARE', hint: 'Programs that run on a computer.', category: 'Vocabulary', difficulty: 'hard' },
+  { word: 'KEYBOARD', hint: 'Device with keys used to type.', category: 'Vocabulary', difficulty: 'hard' },
+  { word: 'COMPUTER', hint: 'Electronic device for processing data.', category: 'Vocabulary', difficulty: 'hard' },
+  { word: 'INTERNET', hint: 'Global network connecting computers.', category: 'Vocabulary', difficulty: 'hard' },
+  { word: 'MUSIC', hint: 'Something you listen to for enjoyment.', category: 'Vocabulary', difficulty: 'easy' },
+  { word: 'HOBBY', hint: 'Something you enjoy doing in your free time.', category: 'Vocabulary', difficulty: 'easy' },
+  { word: 'FRIEND', hint: 'A person you know well and trust.', category: 'Vocabulary', difficulty: 'normal' },
+  { word: 'QUESTION', hint: 'You ask this when you want an answer.', category: 'Vocabulary', difficulty: 'hard' },
 ];
+
+/** Configuración visual y de mecánica por dificultad */
+const DIFFICULTY_CONFIG: Record<Difficulty, { label: string; emoji: string; color: string; description: string }> = {
+  easy:   { label: 'Easy',   emoji: '🟢', color: '#22C55E', description: 'Short, common words' },
+  normal: { label: 'Normal', emoji: '🟡', color: '#F59E0B', description: 'Medium difficulty' },
+  hard:   { label: 'Hard',   emoji: '🔴', color: '#EF4444', description: 'Long or uncommon words' },
+};
 
 const MAX_WRONG = 6;
 
@@ -158,6 +171,7 @@ export default function HangmanPage() {
   const [score, setScore] = useState({ wins: 0, losses: 0, streak: 0 });
   const [surrendered, setSurrendered] = useState(false);
   const [hintShown, setHintShown] = useState(HINT_MODE === 'always');
+  const [difficulty, setDifficulty] = useState<Difficulty>('normal');
 
   const word = entry?.word ?? '';
   const wrongGuesses = useMemo(
@@ -179,13 +193,24 @@ export default function HangmanPage() {
     }
   }, [isWinner, isLoser, gameState]);
 
-  const startNewGame = () => {
-    const next = WORD_BANK[Math.floor(Math.random() * WORD_BANK.length)];
+  const startNewGame = (forcedDifficulty?: Difficulty) => {
+    const useDiff = forcedDifficulty ?? difficulty;
+    // Filtra por dificultad seleccionada; si no hay palabras, cae al banco completo
+    const pool = WORD_BANK.filter((w) => w.difficulty === useDiff);
+    const source = pool.length > 0 ? pool : WORD_BANK;
+    const next = source[Math.floor(Math.random() * source.length)];
     setEntry(next);
     setGuessedLetters([]);
     setGameState('playing');
     setSurrendered(false);
     setHintShown(HINT_MODE === 'always');
+  };
+
+  /** Cambia dificultad y arranca una nueva ronda con el nuevo nivel */
+  const handleDifficultyChange = (d: Difficulty) => {
+    if (d === difficulty) return;
+    setDifficulty(d);
+    startNewGame(d);
   };
 
   useEffect(() => {
@@ -259,6 +284,65 @@ export default function HangmanPage() {
           <p className="text-[var(--ink-soft)] max-w-md mx-auto">
             Guess the word before the figure is complete. Each round has a hint in English.
           </p>
+        </motion.div>
+
+        {/* ============= DIFFICULTY SELECTOR ============= */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+          className="flex flex-col items-center mb-8"
+        >
+          <p className="mono text-[10px] uppercase tracking-[0.22em] text-[var(--muted)] mb-3 font-semibold">
+            Difficulty
+          </p>
+          <div
+            className="relative inline-flex p-1.5 rounded-2xl bg-white border border-[var(--border)]"
+            style={{ boxShadow: 'var(--shadow-sm)' }}
+            role="tablist"
+            aria-label="Select difficulty"
+          >
+            {(Object.keys(DIFFICULTY_CONFIG) as Difficulty[]).map((d) => {
+              const cfg = DIFFICULTY_CONFIG[d];
+              const isActive = difficulty === d;
+              return (
+                <button
+                  key={d}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => handleDifficultyChange(d)}
+                  className="relative z-10 px-4 md:px-6 py-2 rounded-xl text-sm font-semibold transition-colors"
+                  style={{
+                    color: isActive ? '#fff' : 'var(--ink-soft)',
+                  }}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="difficulty-pill"
+                      className="absolute inset-0 rounded-xl -z-10"
+                      style={{
+                        background: `linear-gradient(135deg, ${cfg.color} 0%, ${cfg.color}dd 100%)`,
+                        boxShadow: `0 8px 22px -8px ${cfg.color}88`,
+                      }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative flex items-center gap-1.5">
+                    <span className="text-xs">{cfg.emoji}</span>
+                    {cfg.label}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <motion.p
+            key={difficulty}
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mono text-[11px] text-[var(--muted)] mt-2"
+          >
+            {DIFFICULTY_CONFIG[difficulty].description}
+          </motion.p>
         </motion.div>
 
         {/* ============= SCOREBOARD ============= */}
@@ -469,7 +553,7 @@ export default function HangmanPage() {
                   </motion.div>
                   <div>
                     <motion.button
-                      onClick={startNewGame}
+                      onClick={() => startNewGame()}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.97 }}
                       className="btn-primary"
