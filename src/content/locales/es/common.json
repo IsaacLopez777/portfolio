@@ -4,7 +4,8 @@
     "about": "Sobre mí",
     "projects": "Proyectos",
     "blog": "Blog",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "hangman": "Ahorcado"
   },
   "hero": {
     "greeting": "Hola, soy",

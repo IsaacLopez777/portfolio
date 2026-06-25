@@ -19,6 +19,7 @@ export function Header({ locale }: HeaderProps) {
     { href: `/${locale}/about`, label: t('about') },
     { href: `/${locale}/projects`, label: t('projects') },
     { href: `/${locale}/contact`, label: t('contact') },
+    { href: `/${locale}/hangman`, label: t('hangman') },
   ];
 
   const switchLocale = (newLocale: 'es' | 'en') => {
