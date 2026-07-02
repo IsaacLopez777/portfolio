@@ -2,35 +2,71 @@ import { profile } from '@/lib/db/profile';
 import Image from 'next/image';
 
 export default function ContactPage() {
+  const channels = [
+    {
+      label: 'Teléfono',
+      tile: 'icon-tile-clay',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+        </svg>
+      ),
+      content: (
+        <a href={`tel:${profile.phone}`} className="font-semibold text-[#2D2318] hover:text-[#8E4266] transition-colors">
+          {profile.phone}
+        </a>
+      ),
+    },
+    {
+      label: 'Email',
+      tile: 'icon-tile-honey',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+        </svg>
+      ),
+      content: (
+        <a href={`mailto:${profile.email}`} className="font-semibold text-[#2D2318] hover:text-[#8E4266] transition-colors break-all text-sm">
+          {profile.email}
+        </a>
+      ),
+    },
+    {
+      label: 'Ubicación',
+      tile: 'icon-tile-olive',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+        </svg>
+      ),
+      content: <p className="font-semibold text-[#2D2318]">{profile.location}</p>,
+    },
+  ];
+
   return (
     <div className="min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <h1 className="text-5xl font-extrabold mb-4">Contacto</h1>
-        <p className="text-[#64748B] mb-12 max-w-xl">Estoy a un mensaje de distancia. Elige el canal que prefieras.</p>
+        <h1 className="text-5xl md:text-6xl mb-4">Contacto</h1>
+        <p className="text-[#5D5245] mb-12 max-w-xl">Estoy a un mensaje de distancia. Elige el canal que prefieras.</p>
 
-        <div className="card-premium p-8 mb-8">
-          <div className="grid sm:grid-cols-3 gap-8 text-center">
-            <div>
-              <p className="text-[0.7rem] font-extrabold text-[#3A86FF] uppercase tracking-[0.12em] mb-2">Teléfono</p>
-              <a href={`tel:${profile.phone}`} className="font-semibold text-[#0E1726] hover:text-[#3A86FF] transition-colors">{profile.phone}</a>
+        <div className="grid sm:grid-cols-3 gap-4 mb-8">
+          {channels.map((channel) => (
+            <div key={channel.label} className="card-premium p-6 text-center">
+              <span className={`icon-tile ${channel.tile} mb-3`}>{channel.icon}</span>
+              <p className="text-[0.7rem] font-extrabold text-[#9A8D7B] uppercase tracking-[0.12em] mb-2">{channel.label}</p>
+              {channel.content}
             </div>
-            <div className="sm:border-x border-[#E9EDF5]">
-              <p className="text-[0.7rem] font-extrabold text-[#3A86FF] uppercase tracking-[0.12em] mb-2">Email</p>
-              <a href={`mailto:${profile.email}`} className="font-semibold text-[#0E1726] hover:text-[#3A86FF] transition-colors break-all text-sm">{profile.email}</a>
-            </div>
-            <div>
-              <p className="text-[0.7rem] font-extrabold text-[#3A86FF] uppercase tracking-[0.12em] mb-2">Ubicación</p>
-              <p className="font-semibold text-[#0E1726]">{profile.location}</p>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div className="relative overflow-hidden rounded-[24px] p-10 text-center text-white shadow-[var(--shadow-lg)] mb-12" style={{ background: 'var(--grad-ink)' }}>
-          <div className="absolute -top-16 -right-10 w-56 h-56 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #3A86FF, transparent 70%)' }} />
-          <div className="absolute -bottom-20 -left-10 w-56 h-56 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #9B5CFC, transparent 70%)' }} />
+        <div className="panel-cta p-10 text-center mb-12">
+          <div className="absolute -top-14 -right-10 w-48 h-48 rounded-full" style={{ background: 'rgba(255, 244, 234, 0.12)' }} />
+          <div className="absolute -bottom-16 -left-8 w-44 h-44 rounded-full" style={{ background: 'rgba(255, 244, 234, 0.09)' }} />
+          <span className="absolute top-6 left-8 text-2xl select-none" style={{ color: 'rgba(255, 244, 234, 0.35)' }}>✳</span>
           <div className="relative">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#ffffff' }}>¿Tienes un proyecto en mente?</h2>
-            <p className="mb-7" style={{ color: 'rgba(255,255,255,0.78)' }}>Respondo rápido. ¡Hablemos!</p>
+            <h2 className="text-2xl md:text-3xl mb-3" style={{ color: '#FFF9F1' }}>¿Tienes un proyecto en mente?</h2>
+            <p className="mb-7" style={{ color: 'rgba(255, 244, 234, 0.85)' }}>Respondo rápido. ¡Hablemos!</p>
             <a
               href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
               target="_blank"
@@ -46,11 +82,13 @@ export default function ContactPage() {
         </div>
 
         <section>
-          <h2 className="eyebrow mb-6">Referencia</h2>
+          <div className="flex items-baseline justify-between mb-6">
+            <p className="eyebrow">Referencia</p>
+          </div>
           <div className="card-premium p-8">
             <div className="flex items-center gap-6">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 p-[2px]" style={{ background: 'var(--grad-brand)' }}>
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden flex-shrink-0 p-[2px] bg-[#8E4266]">
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-[#FFFEFB]">
                   <Image
                     src="/images/Foto generica.png"
                     alt="Allan Vega Redondo"
@@ -60,10 +98,10 @@ export default function ContactPage() {
                 </div>
               </div>
               <div>
-                <h3 className="text-lg font-bold text-[#0E1726]">Allan Vega Redondo</h3>
-                <p className="text-[#64748B]">Ingeniero de Preventa Microsoft</p>
-                <p className="text-[#94A3B8] text-sm">Nexsys Centroamérica</p>
-                <a href="tel:+50664046149" className="text-[#3A86FF] hover:text-[#2563EB] font-medium text-sm mt-1 inline-block">+506 6404 6149</a>
+                <h3 className="text-lg font-bold text-[#2D2318]">Allan Vega Redondo</h3>
+                <p className="text-[#5D5245]">Ingeniero de Preventa Microsoft</p>
+                <p className="text-[#9A8D7B] text-sm">Nexsys Centroamérica</p>
+                <a href="tel:+50664046149" className="text-[#8E4266] hover:text-[#6F3050] font-medium text-sm mt-1 inline-block">+506 6404 6149</a>
               </div>
             </div>
           </div>

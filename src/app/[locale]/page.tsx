@@ -4,15 +4,69 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
+/* Iconos SVG — trazo consistente, sin librerías */
+const icons = {
+  code: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+    </svg>
+  ),
+  layers: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" />
+    </svg>
+  ),
+  database: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+    </svg>
+  ),
+  cloud: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+    </svg>
+  ),
+  terminal: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+    </svg>
+  ),
+  warehouse: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+    </svg>
+  ),
+  cart: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+    </svg>
+  ),
+  building: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75m3 3h.75M6.75 21v-2.25a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21" />
+    </svg>
+  ),
+  chart: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM12.75 3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v16.5c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V3.375z" />
+    </svg>
+  ),
+  briefcase: (
+    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m-12 12.006c-.44-.34-.75-.86-.75-1.661V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0" />
+    </svg>
+  ),
+};
+
 export default function HomePage() {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
   const skills = [
-    { category: 'Lenguajes', items: ['JavaScript', 'Java', 'C#', 'SQL'] },
-    { category: 'Frameworks', items: ['Spring Boot', '.NET'] },
-    { category: 'Bases de Datos', items: ['SQL Server', 'Oracle', 'MySQL', 'SQL'] },
-    { category: 'Cloud', items: ['AWS', 'Azure', 'Firebase'] },
-    { category: 'DevOps', items: ['Despliegues', 'Docker', 'CI/CD'] },
+    { category: 'Lenguajes', icon: icons.code, tile: 'icon-tile-clay', dot: '#8E4266', items: ['JavaScript', 'Java', 'C#', 'SQL'] },
+    { category: 'Frameworks', icon: icons.layers, tile: 'icon-tile-honey', dot: '#DDA12E', items: ['Spring Boot', '.NET'] },
+    { category: 'Bases de Datos', icon: icons.database, tile: 'icon-tile-olive', dot: '#7C8C46', items: ['SQL Server', 'Oracle', 'MySQL'] },
+    { category: 'Cloud', icon: icons.cloud, tile: 'icon-tile-clay', dot: '#8E4266', items: ['AWS', 'Azure', 'Firebase'] },
+    { category: 'DevOps', icon: icons.terminal, tile: 'icon-tile-honey', dot: '#DDA12E', items: ['Despliegues', 'Docker', 'CI/CD'] },
   ];
 
   const projects = [
@@ -21,24 +75,32 @@ export default function HomePage() {
       title: 'Data Warehouse Santory',
       desc: 'Desarrollo completo de Data Warehouse en SQL Server con ETL, modelado dimensional y dashboards en Power BI.',
       tech: ['SQL Server', 'ETL', 'Power BI'],
+      icon: icons.warehouse,
+      tile: 'icon-tile-clay',
     },
     {
       id: 2,
       title: 'Tienda en Línea',
       desc: 'Plataforma de comercio electrónico con Spring Boot, Thymeleaf y MySQL. Carrito de compras, autenticación y pagos seguros.',
       tech: ['Spring Boot', 'Firebase', 'MySQL'],
+      icon: icons.cart,
+      tile: 'icon-tile-honey',
     },
     {
       id: 3,
       title: 'Sistema de Gestión Hotelera',
       desc: 'Base de datos Oracle con procedimientos almacenados, vistas especializadas y consultas avanzadas.',
       tech: ['Oracle', 'PL/SQL'],
+      icon: icons.building,
+      tile: 'icon-tile-olive',
     },
     {
       id: 4,
       title: 'Gestión Comercial',
       desc: 'Sistema integral para gestión de clientes, ventas y productos con automatización de procesos.',
       tech: ['Oracle', 'SQL'],
+      icon: icons.chart,
+      tile: 'icon-tile-clay',
     },
   ];
 
@@ -53,35 +115,35 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
             >
               <motion.div
-                className="inline-flex items-center gap-2.5 mb-8"
+                className="inline-flex items-center gap-2.5 mb-8 rounded-full border border-[#EBE1CF] bg-[#FFFEFB] px-3.5 py-1.5 shadow-[var(--shadow-xs)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
               >
                 <span className="relative flex h-2 w-2">
                   <motion.span
-                    className="absolute inline-flex h-full w-full rounded-full bg-[#22B8CF] opacity-60"
+                    className="absolute inline-flex h-full w-full rounded-full bg-[#7C8C46] opacity-60"
                     animate={{ scale: [1, 2.4, 1], opacity: [0.6, 0, 0.6] }}
                     transition={{ duration: 2, repeat: Infinity }}
                   />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22B8CF]" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7C8C46]" />
                 </span>
-                <span className="mono text-xs font-medium text-[#64748B] tracking-tight">
+                <span className="mono text-xs font-medium text-[#5D5245] tracking-tight">
                   disponible para proyectos
                 </span>
               </motion.div>
 
               <motion.p
-                className="mono text-sm text-[#3A86FF] mb-3"
+                className="eyebrow mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.5 }}
               >
-                &lt;/&gt; Backend &amp; Data Engineer
+                Backend &amp; Data Engineer
               </motion.p>
 
               <motion.h1
-                className="text-[2.75rem] md:text-[3.75rem] font-extrabold text-[#0E1726] mb-6 leading-[1.02] tracking-[-0.03em]"
+                className="text-[2.9rem] md:text-[4rem] mb-6 leading-[1.05]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
@@ -95,8 +157,8 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.5 }}
               >
-                <span className="mt-2.5 h-12 w-[3px] rounded-full flex-shrink-0" style={{ background: 'var(--grad-brand)' }} />
-                <p className="text-[#64748B] leading-relaxed">
+                <span className="mt-2.5 h-12 w-[3px] rounded-full flex-shrink-0 bg-[#8E4266]" />
+                <p className="text-[#5D5245] leading-relaxed">
                   Transformo datos en información accionable para el negocio. Especialista en bases de datos,
                   desarrollo backend y automatización de procesos.
                 </p>
@@ -145,15 +207,15 @@ export default function HomePage() {
                   transition={{ type: 'spring', stiffness: 400, damping: 17 }}
                 >
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4m-9 8h10" />
                   </svg>
                   Descargar CV
                 </motion.a>
               </motion.div>
 
-              {/* Stat strip — sustancia real en vez de burbujas */}
+              {/* Franja de datos reales */}
               <motion.div
-                className="flex flex-wrap gap-x-10 gap-y-6 mt-11 pt-9 border-t border-[#E9EDF5]"
+                className="flex flex-wrap gap-x-10 gap-y-6 mt-11 pt-9 border-t border-[#EBE1CF]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
@@ -164,10 +226,10 @@ export default function HomePage() {
                   { num: 'MS', label: 'Práctica en\nMicrosoft' },
                 ].map((stat) => (
                   <div key={stat.label}>
-                    <div className="text-3xl font-extrabold text-[#0E1726] tracking-tight leading-none mb-2">
+                    <div className="serif text-[2.1rem] font-semibold text-[#2D2318] tracking-tight leading-none mb-2">
                       {stat.num}
                     </div>
-                    <div className="mono text-[0.7rem] leading-tight text-[#94A3B8] whitespace-pre-line">
+                    <div className="mono text-[0.7rem] leading-tight text-[#9A8D7B] whitespace-pre-line">
                       {stat.label}
                     </div>
                   </div>
@@ -175,7 +237,7 @@ export default function HomePage() {
               </motion.div>
             </motion.div>
 
-            {/* RIGHT — retrato fundido con el fondo */}
+            {/* DERECHA — retrato en arco editorial */}
             <motion.div
               className="relative flex justify-center lg:justify-end"
               initial={{ opacity: 0, scale: 0.94 }}
@@ -183,35 +245,26 @@ export default function HomePage() {
               transition={{ duration: 0.7, delay: 0.3 }}
             >
               <div className="relative w-full max-w-[330px]">
-                {/* Halo de marca que se funde con la aurora del fondo */}
-                <motion.div
-                  className="absolute -inset-10 rounded-full opacity-60 blur-[70px]"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 42%, rgba(58,134,255,0.45) 0%, rgba(123,92,252,0.22) 45%, transparent 72%)',
-                  }}
-                  animate={{ scale: [0.95, 1.05, 0.95] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-                />
-
-                {/* Anillo punteado decorativo que ecoa el fondo */}
+                {/* Círculo durazno plano detrás, desplazado */}
                 <div
-                  className="absolute inset-2 rounded-[3rem] opacity-60"
-                  style={{
-                    backgroundImage:
-                      'radial-gradient(circle at 1px 1px, rgba(58,134,255,0.25) 1px, transparent 0)',
-                    backgroundSize: '14px 14px',
-                    transform: 'rotate(-3deg) scale(1.06)',
-                    maskImage: 'linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(180deg, transparent, #000 30%, #000 70%, transparent)',
-                  }}
+                  className="absolute -top-8 -left-10 w-52 h-52 rounded-full"
+                  style={{ background: '#F5E2EB' }}
+                />
+                {/* Contorno de arco terracota desplazado — eco del retrato */}
+                <div
+                  className="absolute inset-0 translate-x-4 translate-y-4 border-[1.5px] border-[#8E4266]/30"
+                  style={{ borderRadius: '999px 999px 28px 28px' }}
                 />
 
-                {/* Retrato — squircle, sombra tintada difusa, sin marco duro */}
+                {/* Retrato — arco editorial */}
                 <motion.div
-                  className="relative aspect-[4/5] rounded-[2.75rem] overflow-hidden ring-1 ring-white/70"
-                  style={{ boxShadow: '0 40px 80px -28px rgba(58, 99, 240, 0.55)' }}
-                  animate={{ y: [0, -12, 0] }}
+                  className="relative aspect-[4/5] overflow-hidden"
+                  style={{
+                    borderRadius: '999px 999px 28px 28px',
+                    boxShadow: 'var(--shadow-lg)',
+                    border: '4px solid #FFFEFB',
+                  }}
+                  animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 >
                   <Image
@@ -221,40 +274,46 @@ export default function HomePage() {
                     className="object-cover"
                     priority
                   />
-                  {/* Tinte de marca arriba para unificar color con la página */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-[#3A86FF]/12 via-transparent to-transparent" />
-                  {/* Fundido inferior + pill de estado */}
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center gap-2 glass rounded-2xl px-3.5 py-2.5 shadow-sm">
+                  <div className="absolute inset-x-3 bottom-3 flex items-center justify-center gap-2 glass rounded-full px-3.5 py-2.5 shadow-sm">
                     <span className="relative flex h-2 w-2 flex-shrink-0">
                       <motion.span
-                        className="absolute inline-flex h-full w-full rounded-full bg-[#22B8CF] opacity-60"
+                        className="absolute inline-flex h-full w-full rounded-full bg-[#7C8C46] opacity-60"
                         animate={{ scale: [1, 2.2, 1], opacity: [0.6, 0, 0.6] }}
                         transition={{ duration: 2, repeat: Infinity }}
                       />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#22B8CF]" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#7C8C46]" />
                     </span>
-                    <span className="text-[0.76rem] font-bold text-[#0E1726]">Abierto a oportunidades</span>
+                    <span className="text-[0.76rem] font-bold text-[#2D2318]">Abierto a oportunidades</span>
                   </div>
                 </motion.div>
 
-                {/* Un solo detalle flotante: stack — apoyado, sutil, legible */}
+                {/* Asterisco sol — motivo de marca girando lento */}
+                <motion.span
+                  className="absolute -top-3 right-6 text-3xl text-[#DDA12E] animate-spin-slow select-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.9 }}
+                >
+                  ✳
+                </motion.span>
+
+                {/* Tarjeta flotante: stack */}
                 <motion.div
-                  className="absolute top-6 -right-3 sm:-right-5 glass rounded-2xl px-3.5 py-3 shadow-[var(--shadow-md)]"
+                  className="absolute top-16 -right-3 sm:-right-6 glass rounded-2xl px-3.5 py-3 shadow-[var(--shadow-md)]"
                   initial={{ opacity: 0, x: 12 }}
                   animate={{ opacity: 1, x: 0, y: [0, -6, 0] }}
                   transition={{ x: { delay: 0.8 }, opacity: { delay: 0.8 }, y: { duration: 4.5, repeat: Infinity, ease: 'easeInOut' } }}
                 >
-                  <p className="mono text-[0.58rem] text-[#94A3B8] mb-1.5 uppercase tracking-wider">stack</p>
+                  <p className="mono text-[0.58rem] text-[#9A8D7B] mb-1.5 uppercase tracking-wider">stack</p>
                   <div className="flex flex-col gap-1">
-                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#3A86FF]" /> SQL Server
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#2D2318]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8E4266]" /> SQL Server
                     </span>
-                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#5B63F0]" /> Spring Boot
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#2D2318]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#DDA12E]" /> Spring Boot
                     </span>
-                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#0E1726]">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#22B8CF]" /> Java · C#
+                    <span className="flex items-center gap-2 text-[0.72rem] font-semibold text-[#2D2318]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#7C8C46]" /> Java · C#
                     </span>
                   </div>
                 </motion.div>
@@ -270,7 +329,13 @@ export default function HomePage() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="eyebrow mb-8">Experiencia</h2>
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="eyebrow mb-2">Trayectoria</p>
+              <h2 className="text-3xl md:text-4xl">Experiencia</h2>
+            </div>
+            <span className="section-num">/ 01</span>
+          </div>
 
           <div className="flex gap-6">
             <motion.div
@@ -281,26 +346,30 @@ export default function HomePage() {
               transition={{ delay: 0.2 }}
             >
               <motion.div
-                className="w-3.5 h-3.5 rounded-full ring-4 ring-[#EAF1FF]"
-                style={{ background: 'var(--grad-brand)' }}
+                className="w-3.5 h-3.5 rounded-full ring-4 ring-[#F3E0EB] bg-[#8E4266]"
                 animate={{ scale: [1, 1.25, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              <div className="w-0.5 h-full bg-gradient-to-b from-[#C7D7FF] to-transparent mt-2" />
+              <div className="w-0.5 h-full bg-gradient-to-b from-[#EBD9C4] to-transparent mt-2" />
             </motion.div>
             <motion.div
               className="flex-1 card-premium p-7 mb-6"
               whileHover={{ y: -4 }}
             >
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="chip chip-brand">Nexsys Centroamérica</span>
-                <span className="chip">Departamento de Microsoft</span>
+              <div className="flex items-start gap-4">
+                <span className="icon-tile icon-tile-clay mt-1 hidden sm:inline-flex">{icons.briefcase}</span>
+                <div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="chip chip-brand">Nexsys Centroamérica</span>
+                    <span className="chip">Departamento de Microsoft</span>
+                  </div>
+                  <h3 className="text-xl mb-1">Desarrollador Backend</h3>
+                  <p className="text-sm font-semibold text-[#8E4266] mb-3">Práctica Profesional</p>
+                  <p className="text-[#5D5245] leading-relaxed">
+                    Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-[#0E1726] mb-1">Desarrollador Backend</h3>
-              <p className="text-sm font-medium text-[#3A86FF] mb-3">Práctica Profesional</p>
-              <p className="text-[#64748B] leading-relaxed">
-                Desarrollo de herramientas internas para optimización de procesos comerciales y participación en iniciativas de automatización orientadas a la mejora operativa de la empresa.
-              </p>
             </motion.div>
           </div>
         </motion.section>
@@ -312,7 +381,13 @@ export default function HomePage() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="eyebrow mb-8">Skills</h2>
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="eyebrow mb-2">Herramientas</p>
+              <h2 className="text-3xl md:text-4xl">Skills</h2>
+            </div>
+            <span className="section-num">/ 02</span>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {skills.map((group, i) => (
@@ -325,7 +400,8 @@ export default function HomePage() {
                 transition={{ delay: i * 0.08 }}
                 whileHover={{ y: -6 }}
               >
-                <h3 className="text-[0.7rem] font-extrabold text-[#3A86FF] uppercase tracking-[0.12em] mb-3">{group.category}</h3>
+                <span className={`icon-tile ${group.tile} mb-3.5`}>{group.icon}</span>
+                <h3 className="text-[0.95rem] font-semibold mb-3">{group.category}</h3>
                 <div className="flex flex-wrap gap-1.5">
                   {group.items.map((skill) => (
                     <motion.span
@@ -333,6 +409,7 @@ export default function HomePage() {
                       className="chip text-[0.72rem] cursor-default"
                       whileHover={{ scale: 1.08, y: -2 }}
                     >
+                      <span className="chip-dot" style={{ background: group.dot }} />
                       {skill}
                     </motion.span>
                   ))}
@@ -349,7 +426,13 @@ export default function HomePage() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="eyebrow mb-8">Proyectos</h2>
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="eyebrow mb-2">Trabajo seleccionado</p>
+              <h2 className="text-3xl md:text-4xl">Proyectos</h2>
+            </div>
+            <span className="section-num">/ 03</span>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-5">
             {projects.map((project, i) => (
@@ -364,18 +447,15 @@ export default function HomePage() {
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ y: -6 }}
               >
-                <motion.div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-white shadow-[var(--shadow-glow)]"
-                  style={{ background: 'var(--grad-brand)' }}
+                <motion.span
+                  className={`icon-tile ${project.tile} mb-4`}
                   animate={hoveredProject === i ? { rotate: [0, 8, -8, 0] } : {}}
                   transition={{ duration: 0.4 }}
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-                  </svg>
-                </motion.div>
-                <h3 className="text-lg font-bold text-[#0E1726] mb-2">{project.title}</h3>
-                <p className="text-sm text-[#64748B] mb-5 leading-relaxed">{project.desc}</p>
+                  {project.icon}
+                </motion.span>
+                <h3 className="text-xl mb-2">{project.title}</h3>
+                <p className="text-sm text-[#5D5245] mb-5 leading-relaxed">{project.desc}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {project.tech.map((tech) => (
                     <span key={tech} className="chip text-[0.72rem]">
@@ -395,19 +475,25 @@ export default function HomePage() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="eyebrow mb-8">Contacto</h2>
+          <div className="flex items-baseline justify-between mb-8">
+            <div>
+              <p className="eyebrow mb-2">Hablemos</p>
+              <h2 className="text-3xl md:text-4xl">Contacto</h2>
+            </div>
+            <span className="section-num">/ 04</span>
+          </div>
 
           <motion.div
-            className="relative overflow-hidden rounded-[24px] p-10 text-center text-white shadow-[var(--shadow-lg)]"
-            style={{ background: 'var(--grad-ink)' }}
+            className="panel-cta p-10 text-center"
             whileHover={{ scale: 1.01 }}
           >
-            {/* glow accents */}
-            <div className="absolute -top-16 -right-10 w-56 h-56 rounded-full blur-3xl opacity-40" style={{ background: 'radial-gradient(circle, #3A86FF, transparent 70%)' }} />
-            <div className="absolute -bottom-20 -left-10 w-56 h-56 rounded-full blur-3xl opacity-30" style={{ background: 'radial-gradient(circle, #9B5CFC, transparent 70%)' }} />
+            {/* Formas planas decorativas — nada de degradados */}
+            <div className="absolute -top-14 -right-10 w-48 h-48 rounded-full" style={{ background: 'rgba(255, 244, 234, 0.12)' }} />
+            <div className="absolute -bottom-16 -left-8 w-44 h-44 rounded-full" style={{ background: 'rgba(255, 244, 234, 0.09)' }} />
+            <span className="absolute top-6 left-8 text-2xl select-none" style={{ color: 'rgba(255, 244, 234, 0.35)' }}>✳</span>
             <div className="relative">
-              <h3 className="text-2xl md:text-3xl font-bold mb-3" style={{ color: '#ffffff' }}>¿Tienes un proyecto en mente?</h3>
-              <p className="mb-7" style={{ color: 'rgba(255,255,255,0.78)' }}>Hablemos y construyamos algo grande juntos.</p>
+              <h3 className="text-2xl md:text-3xl mb-3" style={{ color: '#FFF9F1' }}>¿Tienes un proyecto en mente?</h3>
+              <p className="mb-7" style={{ color: 'rgba(255, 244, 234, 0.85)' }}>Hablemos y construyamos algo grande juntos.</p>
               <motion.a
                 href="https://wa.me/50687425031?text=Hola%20Isaac,%20me%20gustaría%20contactarte."
                 target="_blank"
@@ -420,14 +506,14 @@ export default function HomePage() {
                 </svg>
                 Escríbeme por WhatsApp
               </motion.a>
-              <p className="text-white/70 text-sm mt-6">lopeztenorio58@gmail.com</p>
+              <p className="text-sm mt-6" style={{ color: 'rgba(255, 244, 234, 0.75)' }}>lopeztenorio58@gmail.com</p>
             </div>
           </motion.div>
         </motion.section>
 
-        <footer className="text-center py-8 border-t border-[#E9EDF5]">
-          <p className="text-[#64748B]">© 2026 Isaac Tenorio López</p>
-          <p className="text-[#94A3B8] text-sm mt-1">Tres Ríos, Costa Rica</p>
+        <footer className="text-center py-8 border-t border-[#EBE1CF]">
+          <p className="text-[#5D5245]">© 2026 Isaac Tenorio López</p>
+          <p className="text-[#9A8D7B] text-sm mt-1">Tres Ríos, Costa Rica</p>
         </footer>
       </div>
     </div>

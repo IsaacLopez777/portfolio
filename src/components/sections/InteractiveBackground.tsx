@@ -14,60 +14,82 @@ export default function InteractiveBackground() {
   return (
     <div
       className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: -1, background: '#F6F8FC' }}
+      style={{ zIndex: -1, background: '#FBF6EE' }}
     >
-      {/* Soft color mesh — premium aurora glow */}
+      {/* Círculo rubor ciruela plano — esquina superior derecha */}
       <div
-        className="absolute"
+        className="absolute rounded-full"
         style={{
-          top: '-12%',
-          left: '-8%',
-          width: '46vw',
-          height: '46vw',
-          background:
-            'radial-gradient(circle, rgba(58,134,255,0.20) 0%, rgba(58,134,255,0) 68%)',
-          filter: 'blur(20px)',
-          animation: 'mesh-drift 18s ease-in-out infinite',
-        }}
-      />
-      <div
-        className="absolute"
-        style={{
-          top: '20%',
-          right: '-12%',
-          width: '42vw',
-          height: '42vw',
-          background:
-            'radial-gradient(circle, rgba(155,92,252,0.16) 0%, rgba(155,92,252,0) 68%)',
-          filter: 'blur(20px)',
-          animation: 'mesh-drift 22s ease-in-out infinite reverse',
-        }}
-      />
-      <div
-        className="absolute"
-        style={{
-          bottom: '-16%',
-          left: '28%',
-          width: '40vw',
-          height: '40vw',
-          background:
-            'radial-gradient(circle, rgba(34,184,207,0.12) 0%, rgba(34,184,207,0) 70%)',
-          filter: 'blur(20px)',
-          animation: 'mesh-drift 26s ease-in-out infinite',
+          top: '-14%',
+          right: '-10%',
+          width: '38vw',
+          height: '38vw',
+          minWidth: '340px',
+          minHeight: '340px',
+          background: '#F5E4EC',
+          animation: 'drift-slow 24s ease-in-out infinite',
         }}
       />
 
-      {/* Fine dotted grid for texture */}
+      {/* Medio arco miel — plano, asoma por la izquierda */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          top: '34%',
+          left: '-16%',
+          width: '26vw',
+          height: '26vw',
+          minWidth: '240px',
+          minHeight: '240px',
+          background: '#F7EDD4',
+          animation: 'drift-slow 30s ease-in-out infinite reverse',
+        }}
+      />
+
+      {/* Anillo ciruela fino — decorativo */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          top: '8%',
+          left: '12%',
+          width: '180px',
+          height: '180px',
+          border: '1.5px solid rgba(142, 66, 102, 0.18)',
+        }}
+      />
+
+      {/* Círculo oliva pequeño — abajo derecha */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          bottom: '6%',
+          right: '8%',
+          width: '120px',
+          height: '120px',
+          background: '#EEF1DC',
+        }}
+      />
+
+      {/* Anillo miel — abajo izquierda */}
+      <div
+        className="absolute rounded-full"
+        style={{
+          bottom: '-4%',
+          left: '20%',
+          width: '220px',
+          height: '220px',
+          border: '1.5px solid rgba(221, 161, 46, 0.22)',
+        }}
+      />
+
+      {/* Grano de papel — textura sutil que se siente cara */}
       <div
         className="absolute inset-0"
         style={{
           backgroundImage:
-            'radial-gradient(circle at 1px 1px, rgba(148,163,184,0.16) 1px, transparent 0)',
-          backgroundSize: '34px 34px',
-          maskImage:
-            'radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)',
-          WebkitMaskImage:
-            'radial-gradient(ellipse 80% 60% at 50% 40%, #000 40%, transparent 100%)',
+            "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          opacity: 0.035,
+          mixBlendMode: 'multiply',
         }}
       />
     </div>
